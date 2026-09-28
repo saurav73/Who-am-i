@@ -146,6 +146,10 @@
     animeBtn.addEventListener("click", function () {
       var cur = root.getAttribute("data-theme");
       var next = cur === "anime" ? lastNormal : "anime";
+      if (next === "anime") {
+        warmDomainChant();
+        if (animeSub === "jjk") { playDomainChant(); } /* Sukuna speaks as his domain opens */
+      }
       if (next === "anime" && !reduceMotion) {
         playAnimeTransition(next);
       } else {
