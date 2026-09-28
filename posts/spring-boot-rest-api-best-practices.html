@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spring Boot REST API Best Practices: Field Guide</title>
+  <meta name="description" content="Spring Boot REST API best practices from real projects: layered architecture, validation, error handling and MySQL setup. A practical field guide for Java devs.">
+  <meta name="theme-color" content="#FBFBF9">
+  <link rel="icon" href="../assets/img/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="canonical" href="https://saurabshrestha.com.np/posts/spring-boot-rest-api-best-practices.html">
+  <meta property="og:title" content="Spring Boot REST API Best Practices: Field Guide">
+  <meta property="og:description" content="Spring Boot REST API best practices from real projects: layered architecture, validation, error handling and MySQL setup. A practical field guide for Java devs.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://saurabshrestha.com.np/posts/spring-boot-rest-api-best-practices.html">
+  <meta property="og:image" content="https://saurabshrestha.com.np/assets/img/profile.jpg">
+  <meta property="og:site_name" content="Saurav Shrestha">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Spring Boot REST API Best Practices: Field Guide">
+  <meta name="twitter:description" content="Spring Boot REST API best practices from real projects: layered architecture, validation, error handling and MySQL setup. A practical field guide for Java devs.">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Spring Boot REST API Best Practices: A Field Guide",
+  "datePublished": "2026-09-20",
+  "author": {"@type": "Person", "name": "Saurav Shrestha", "url": "https://saurabshrestha.com.np/"},
+  "url": "https://saurabshrestha.com.np/posts/spring-boot-rest-api-best-practices.html"
+}
+  </script>
+</head>
+<body>
+
+  <!-- ======= Floating pill nav ======= -->
+  <nav class="pill-nav" aria-label="Primary">
+    <div class="nav-group">
+      <a class="nav-btn" href="../index.html" data-tip="Home" aria-label="Home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9.5"/><path d="M9.5 21v-6h5v6"/></svg>
+      </a>
+      <a class="nav-btn" href="../about.html" data-tip="About" aria-label="About">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="3.5" width="12.5" height="17" rx="2"/><path d="M9.5 3.5v17"/><path d="M13 8.5h2.5M13 12h2.5"/></svg>
+      </a>
+      <a class="nav-btn" href="../work.html" data-tip="Work" aria-label="Work">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7.5" width="18" height="12.5" rx="2.5"/><path d="M9.5 7.5V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v1.5"/><path d="M3 12.5h18"/></svg>
+      </a>
+      <a class="nav-btn" href="../projects.html" data-tip="Projects" aria-label="Projects">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="7" height="7" rx="2"/><rect x="13.5" y="3.5" width="7" height="7" rx="2"/><rect x="3.5" y="13.5" width="7" height="7" rx="2"/><rect x="13.5" y="13.5" width="7" height="7" rx="2"/></svg>
+      </a>
+      <a class="nav-btn active" href="../blog.html" data-tip="Blog" aria-label="Blog" aria-current="page">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5h9L20 8.5v12a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-16a1 1 0 0 1 1-1Z"/><path d="M14.5 3.5v5.5H20"/><path d="M9 13.5h6M9 17h6"/></svg>
+      </a>
+      <a class="nav-btn" href="../contact.html" data-tip="Contact" aria-label="Contact">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="m4 7.5 8 5.5 8-5.5"/></svg>
+      </a>
+    </div>
+    <span class="nav-divider" aria-hidden="true"></span>
+    <div class="nav-group">
+      <a class="nav-btn" href="https://github.com/saurav73" target="_blank" rel="noopener" data-tip="GitHub" aria-label="GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56 0-.27-.01-1.17-.02-2.12-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.72-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.42-2.7 5.39-5.26 5.68.41.35.77 1.05.77 2.12 0 1.53-.01 2.76-.01 3.14 0 .31.21.68.8.56A10.52 10.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>
+      </a>
+      <a class="nav-btn" href="#" data-tip="LinkedIn" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45Z"/></svg>
+      </a>
+      <a class="nav-btn" href="#" data-tip="Instagram" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.2" fill="currentColor" stroke="none"/></svg>
+      </a>
+    </div>
+    <span class="nav-divider" aria-hidden="true"></span>
+    <div class="nav-group">
+      <button class="nav-btn" id="theme-toggle" data-tip="Toggle theme" aria-label="Toggle light and dark mode">
+        <span class="theme-icon" aria-hidden="true">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M2.5 12h2.4M19.1 12h2.4M5.3 5.3l1.7 1.7M17 17l1.7 1.7M18.7 5.3 17 7M7 17l-1.7 1.7"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5Z"/></svg>
+        </span>
+      </button>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <article class="article">
+      <header class="article-head">
+        <p class="label reveal">Java</p>
+        <h1 class="reveal reveal-d1">Spring Boot REST API Best Practices: A Field Guide</h1>
+        <div class="post-meta reveal reveal-d2">
+          <span>September 20, 2026</span><span class="dot">·</span><span>5 min read</span><span class="dot">·</span><span>By Saurav Shrestha</span>
+        </div>
+      </header>
+
+      <div class="article-body reveal">
+        <p class="lead">I learned most of these the hard way while building a hotel room booking system with Spring Boot: a REST API for admins and guests to manage rooms, bookings, and availability. The first version worked. The second version, rebuilt with the practices below, was something I would actually show to another developer.</p>
+
+        <h2>Separate your layers</h2>
+        <p>The single biggest upgrade you can make to a Spring Boot project is also the simplest: stop putting business logic in controllers. Controllers should translate HTTP into method calls and method results back into HTTP. Nothing more. The classic three layers are controller, service, and repository, and each one should have exactly one job:</p>
+        <ul>
+          <li><strong>Controller:</strong> reads the request, calls the service, returns the response.</li>
+          <li><strong>Service:</strong> holds the business rules, like "a room cannot be double-booked".</li>
+          <li><strong>Repository:</strong> talks to the database, ideally through Spring Data JPA interfaces.</li>
+        </ul>
+        <p>When I moved booking validation out of my controller and into a <code>BookingService</code>, the controller shrank from 80 lines to 20, and suddenly I could test the rules without spinning up HTTP at all.</p>
+
+        <h2>Validate at the door</h2>
+        <p>Never trust the request body. Jakarta validation annotations let you declare the rules right on your DTO, and Spring enforces them before your code even runs. Here is a booking request object from my project:</p>
+        <pre><code>public class BookingRequest {
+
+    @NotNull(message = "Room id is required")
+    private Long roomId;
+
+    @NotNull(message = "Check-in date is required")
+    @FutureOrPresent(message = "Check-in cannot be in the past")
+    private LocalDate checkIn;
+
+    @NotNull(message = "Check-out date is required")
+    @Future(message = "Check-out must be in the future")
+    private LocalDate checkOut;
+
+    @Email(message = "Guest email must be valid")
+    @NotBlank(message = "Guest email is required")
+    private String guestEmail;
+
+    // getters and setters
+}</code></pre>
+        <p>Pair it with <code>@Valid</code> on the controller parameter and invalid requests are rejected automatically with a 400 status. Writing this once beats writing null checks in every endpoint forever.</p>
+
+        <h2>One place for errors</h2>
+        <p>Scattered try-catch blocks produce inconsistent APIs: one endpoint returns a stack trace, another returns an empty 500. A single <code>@RestControllerAdvice</code> class fixes this for the whole application:</p>
+        <pre><code>@RestControllerAdvice
+public class ApiExceptionHandler {
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity&lt;Map&lt;String, String&gt;&gt; handleValidation(
+            MethodArgumentNotValidException ex) {
+        Map&lt;String, String&gt; errors = new HashMap&lt;&gt;();
+        ex.getBindingResult().getFieldErrors()
+          .forEach(e -&gt; errors.put(e.getField(), e.getDefaultMessage()));
+        return ResponseEntity.badRequest().body(errors);
+    }
+
+    @ExceptionHandler(RoomNotAvailableException.class)
+    public ResponseEntity&lt;Map&lt;String, String&gt;&gt; handleConflict(
+            RoomNotAvailableException ex) {
+        return ResponseEntity.status(HttpStatus.CONFLICT)
+                .body(Map.of("error", ex.getMessage()));
+    }
+}</code></pre>
+        <p>Now every validation failure returns a clean field-to-message map, and domain problems like double bookings return a 409 Conflict with a human message. Your frontend developers will thank you.</p>
+
+        <h2>Keep secrets out of code</h2>
+        <p>Database passwords do not belong in <code>application.properties</code> committed to Git. Use environment variables and reference them:</p>
+        <pre><code>spring.datasource.url=${DB_URL:jdbc:mysql://localhost:3306/hotel}
+spring.datasource.username=${DB_USER:root}
+spring.datasource.password=${DB_PASSWORD:}</code></pre>
+        <p>The part after the colon is a local default, so the app still runs on your machine with zero setup while production injects real secrets. Add <code>application-prod.properties</code> to <code>.gitignore</code> discipline and you will never leak a credential in a repo again.</p>
+
+        <h2>Paginate every list</h2>
+        <p>The endpoint I am most embarrassed about returned every booking in the database in a single response. It worked fine with forty test rows and would have collapsed with forty thousand. Spring Data makes pagination almost free, so there is no excuse:</p>
+        <pre><code>@GetMapping("/rooms")
+public Page&lt;RoomResponse&gt; listRooms(
+        @RequestParam(defaultValue = "0") int page,
+        @RequestParam(defaultValue = "20") int size) {
+    return roomService.findAll(PageRequest.of(page, size))
+            .map(RoomResponse::from);
+}</code></pre>
+        <p>The response now carries the items plus metadata like total pages and total elements, which is exactly what a frontend needs to build page controls. Make this the default for every list endpoint from the start. Retrofitting pagination later means changing every client at once.</p>
+
+        <h2>Test the sad paths</h2>
+        <p>Happy-path tests feel productive and prove almost nothing. The tests that saved my booking system were the sad ones: booking a room that does not exist, checking out before checking in, and two users racing to book the last available room. Write the sad-path test first, watch it fail, then make it pass. Your future self, debugging at midnight, will be grateful.</p>
+
+        <h2>A checklist before you ship</h2>
+        <p>Before I call any API done, I run through this list: consistent response shapes, validation on every input DTO, a global exception handler, no secrets in the repo, and pagination on every list endpoint (returning 10,000 rooms in one response is a rite of passage nobody needs twice). It takes an hour and it is the difference between a demo and a product.</p>
+      </div>
+
+      <nav class="post-nav" aria-label="More posts">
+        <a class="text-link" href="esp32-home-automation-nepal.html">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+          Newer: ESP32 Home Automation
+        </a>
+        <a class="text-link" href="react-beginners-poetry-platform.html">Older: React.js for Beginners
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </nav>
+    </article>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-inner">
+        <span>© <span id="year">2026</span> Saurav Shrestha · Lalitpur, Nepal</span>
+        <span>Designed &amp; built by hand.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>
