@@ -41,7 +41,6 @@
       root.setAttribute("data-anime", animeSub);
       if (subBar) { subBar.hidden = false; }
       startPetals();
-      warmDomainChant(); /* preload Sukuna's chant so the first tap plays instantly */
     } else {
       if (subBar) { subBar.hidden = true; }
       stopPetals();
@@ -61,7 +60,10 @@
     if (kicker && KICKERS[animeSub]) { kicker.textContent = KICKERS[animeSub]; }
   }
 
-  /* Sukuna's domain chant, voiced when the Jujutsu Kaisen tab is chosen */
+  /* Sukuna's domain chant — PARKED: voice removed for now.
+     The user will supply their own audio; drop it in as
+     assets/audio/ryoiki-tenkai.mp3 and call playDomainChant()
+     from the JJK sub-tab click and the anime-mode entry. */
   var domainAudio = null;
   function assetUrl(path) {
     var scripts = document.getElementsByTagName("script");
@@ -103,7 +105,6 @@
       var btn = ev.target && ev.target.closest ? ev.target.closest(".sub-tab") : null;
       if (!btn || !btn.getAttribute("data-sub")) { return; }
       var sub = btn.getAttribute("data-sub");
-      if (sub === "jjk") { playDomainChant(); } /* chant on every JJK tap */
       setAnimeSub(sub);
     });
   }
@@ -146,10 +147,6 @@
     animeBtn.addEventListener("click", function () {
       var cur = root.getAttribute("data-theme");
       var next = cur === "anime" ? lastNormal : "anime";
-      if (next === "anime") {
-        warmDomainChant();
-        if (animeSub === "jjk") { playDomainChant(); } /* Sukuna speaks as his domain opens */
-      }
       if (next === "anime" && !reduceMotion) {
         playAnimeTransition(next);
       } else {
