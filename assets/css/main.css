@@ -177,13 +177,18 @@ a { color: inherit; text-decoration: none; }
   transition: opacity .3s ease, transform .45s cubic-bezier(.34, 1.4, .44, 1);
 }
 .theme-icon .icon-moon,
-.theme-icon .icon-anime { opacity: 0; transform: rotate(-90deg) scale(.6); }
+.theme-icon .icon-anime,
+.theme-icon .icon-sword { opacity: 0; transform: rotate(-90deg) scale(.6); }
 html[data-theme="dark"] .theme-icon .icon-sun,
-html[data-theme="dark"] .theme-icon .icon-anime { opacity: 0; transform: rotate(90deg) scale(.6); }
+html[data-theme="dark"] .theme-icon .icon-anime,
+html[data-theme="dark"] .theme-icon .icon-sword { opacity: 0; transform: rotate(90deg) scale(.6); }
 html[data-theme="dark"] .theme-icon .icon-moon { opacity: 1; transform: rotate(0) scale(1); }
 html[data-theme="anime"] .theme-icon .icon-sun,
-html[data-theme="anime"] .theme-icon .icon-moon { opacity: 0; transform: rotate(90deg) scale(.6); }
+html[data-theme="anime"] .theme-icon .icon-moon,
+html[data-theme="anime"] .theme-icon .icon-sword { opacity: 0; transform: rotate(90deg) scale(.6); }
 html[data-theme="anime"] .theme-icon .icon-anime { opacity: 1; transform: rotate(0) scale(1); }
+html[data-theme="anime"][data-anime="bleach"] .theme-icon .icon-anime { opacity: 0; transform: rotate(90deg) scale(.6); }
+html[data-theme="anime"][data-anime="bleach"] .theme-icon .icon-sword { opacity: 1; transform: rotate(0) scale(1); }
 
 /* anime mode tab: manga bookmark pinned to the right edge of the screen */
 .mode-tab {
@@ -212,6 +217,9 @@ html[data-theme="anime"] .theme-icon .icon-anime { opacity: 1; transform: rotate
   animation: tab-beacon 3.2s ease-in-out infinite;
 }
 .mode-tab svg { width: 20px; height: 20px; }
+.mode-tab .mt-sword { display: none; }
+html[data-theme="anime"][data-anime="bleach"] .mode-tab .mt-hat { display: none; }
+html[data-theme="anime"][data-anime="bleach"] .mode-tab .mt-sword { display: block; }
 .mode-tab:hover { color: var(--ink); border-color: var(--ink); }
 .mode-tab .mt-to-normal { display: none; }
 .mode-tab.active {
@@ -228,6 +236,41 @@ html[data-theme="anime"] .theme-icon .icon-anime { opacity: 1; transform: rotate
 @keyframes tab-beacon {
   0%, 100% { box-shadow: -6px 0 20px rgba(0, 0, 0, .22); }
   50% { box-shadow: -6px 0 20px rgba(255, 46, 76, .45); }
+}
+
+/* anime sub-mode switcher: One Piece / Bleach mini tabs under the main tab */
+.anime-sub {
+  position: fixed;
+  right: 0;
+  top: calc(50% + 124px);
+  z-index: 900;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.anime-sub[hidden] { display: none; }
+.sub-tab {
+  writing-mode: vertical-rl;
+  padding: 14px 10px;
+  background: var(--surface);
+  color: var(--muted);
+  border: 1px solid var(--hairline);
+  border-right: none;
+  border-radius: 12px 0 0 12px;
+  box-shadow: -4px 0 14px rgba(0, 0, 0, .2);
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  transition: background .25s ease, color .25s ease, box-shadow .25s ease;
+}
+.sub-tab:hover { color: var(--ink); }
+.sub-tab.is-active {
+  background: #FF2E4C;
+  color: #fff;
+  border-color: #0A0A0A;
+  box-shadow: -4px 0 18px rgba(255, 46, 76, .55);
 }
 
 /* ---------- hero ---------- */

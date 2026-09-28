@@ -543,3 +543,59 @@ html[data-theme="anime"] .footer-inner span:last-child {
   transform: skewX(-8deg);
   box-shadow: 3px 3px 0 rgba(69, 232, 255, .8);
 }
+
+/* ---------- BLEACH sub-mode: getsuga blue + ichigo orange ---------- */
+html[data-theme="anime"][data-anime="bleach"] {
+  --accent: #8FEFFF;            /* getsuga tensho blue-white */
+  --accent-2: #FF7A1A;          /* ichigo orange */
+  --accent-soft: rgba(143, 239, 255, .12);
+  --sakura: #BFEFFF;
+  --shadow-pill: 0 10px 40px rgba(0, 0, 0, .6), 0 0 24px rgba(143, 239, 255, .16);
+}
+
+/* bleach night air: cold blue aurora with an ember glow */
+html[data-theme="anime"][data-anime="bleach"] body::after {
+  background:
+    radial-gradient(ellipse 40% 30% at 30% 20%, rgba(143, 239, 255, .12), transparent 70%),
+    radial-gradient(ellipse 45% 35% at 70% 80%, rgba(255, 122, 26, .10), transparent 70%);
+}
+
+/* narrator boxes, leads and kickers strike orange */
+html[data-theme="anime"][data-anime="bleach"] .label { box-shadow: 4px 4px 0 rgba(255, 122, 26, .9); }
+html[data-theme="anime"][data-anime="bleach"] .lead { border-left-color: var(--accent-2); }
+html[data-theme="anime"][data-anime="bleach"] .hero h1 .serif {
+  background: linear-gradient(transparent 60%, rgba(255, 122, 26, .5) 60%);
+}
+
+/* bleach portrait: hide the One Piece illustration, ink-style the real photo */
+html[data-theme="anime"][data-anime="bleach"] .portrait-card img.profile-anime { display: none; }
+html[data-theme="anime"][data-anime="bleach"] .portrait-card > img:not(.profile-anime) {
+  filter: grayscale(1) contrast(1.35) brightness(1.03);
+}
+html[data-theme="anime"][data-anime="bleach"] .portrait-shine {
+  background: rgba(255, 122, 26, .16);
+  mix-blend-mode: multiply;
+}
+html[data-theme="anime"][data-anime="bleach"] .portrait-card::after {
+  background:
+    radial-gradient(closest-side, rgba(143, 239, 255, .38), transparent 70%),
+    radial-gradient(closest-side at 80% 90%, rgba(255, 122, 26, .30), transparent 70%);
+}
+
+/* tabs strike orange in bleach mode */
+html[data-theme="anime"][data-anime="bleach"] .mode-tab.active {
+  background: #FF7A1A;
+  box-shadow: -6px 0 28px rgba(255, 122, 26, .6), -6px 6px 0 rgba(0, 0, 0, .45);
+}
+html[data-theme="anime"][data-anime="bleach"] .sub-tab.is-active {
+  background: #FF7A1A;
+  box-shadow: -4px 0 18px rgba(255, 122, 26, .55);
+}
+
+/* bleach entry transition: 斬 instead of ドン */
+.at-bleach .at-don {
+  color: #fff;
+  -webkit-text-stroke: 3px #0A0A1C;
+  text-shadow: 10px 10px 0 #FF7A1A;
+}
+.at-bleach .at-sub { text-shadow: 4px 4px 0 #FF7A1A; }

@@ -12,6 +12,13 @@
   var toggleBtn = document.getElementById("theme-toggle");
   var animeBtn = document.getElementById("anime-toggle");
   var lastNormal = "light"; /* last non-anime theme, used when leaving anime mode */
+  var SUB_KEY = "ss-anime-sub";
+  var animeSub = "onepiece"; /* anime sub-mode: "onepiece" | "bleach" */
+  var subBar = document.getElementById("anime-sub");
+  var KICKERS = {
+    onepiece: "第1話 · THE DEVELOPER ARC",
+    bleach: "第1話 · THE SOUL REAPER ARC"
+  };
 
   function updateToggleLabel(theme) {
     if (toggleBtn) {
@@ -30,12 +37,52 @@
       animeBtn.setAttribute("aria-pressed", theme === "anime" ? "true" : "false");
     }
     updateToggleLabel(theme);
-    if (theme === "anime") { startPetals(); } else { stopPetals(); }
+    if (theme === "anime") {
+      root.setAttribute("data-anime", animeSub);
+      if (subBar) { subBar.hidden = false; }
+      startPetals();
+    } else {
+      if (subBar) { subBar.hidden = true; }
+      stopPetals();
+    }
+  }
+
+  /* anime sub-modes: One Piece / Bleach */
+  function syncSubUI() {
+    root.setAttribute("data-anime", animeSub);
+    if (subBar) {
+      var btns = subBar.querySelectorAll(".sub-tab");
+      for (var i = 0; i < btns.length; i++) {
+        btns[i].classList.toggle("is-active", btns[i].getAttribute("data-sub") === animeSub);
+      }
+    }
+    var kicker = document.querySelector(".anime-kicker");
+    if (kicker && KICKERS[animeSub]) { kicker.textContent = KICKERS[animeSub]; }
+  }
+
+  function setAnimeSub(sub) {
+    if (sub !== "onepiece" && sub !== "bleach") { return; }
+    animeSub = sub;
+    try { localStorage.setItem(SUB_KEY, sub); } catch (e) { /* ignore */ }
+    syncSubUI();
+    if (root.getAttribute("data-theme") === "anime") { restartPetals(); }
+  }
+
+  if (subBar) {
+    subBar.addEventListener("click", function (ev) {
+      var btn = ev.target && ev.target.closest ? ev.target.closest(".sub-tab") : null;
+      if (btn && btn.getAttribute("data-sub")) { setAnimeSub(btn.getAttribute("data-sub")); }
+    });
   }
 
   function initTheme() {
     var saved = null;
     try { saved = localStorage.getItem(THEME_KEY); } catch (e) { /* ignore */ }
+    try {
+      var savedSub = localStorage.getItem(SUB_KEY);
+      if (savedSub === "onepiece" || savedSub === "bleach") { animeSub = savedSub; }
+    } catch (e) { /* ignore */ }
+    syncSubUI();
     var prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
     if (THEMES.indexOf(saved) !== -1) {
       if (saved === "anime") { lastNormal = prefersDark ? "dark" : "light"; }
@@ -82,7 +129,8 @@
     burst.className = "at-burst";
     var don = document.createElement("span");
     don.className = "at-don";
-    don.textContent = "ドン！";
+    don.textContent = animeSub === "bleach" ? "斬！" : "ドン！";
+    if (animeSub === "bleach") { ov.classList.add("at-bleach"); }
     var sub = document.createElement("span");
     sub.className = "at-sub";
     sub.textContent = "ANIME MODE";
@@ -103,20 +151,25 @@
   var petalCtx = null;
   var petalRaf = 0;
   var petals = [];
-  var PETAL_COLORS = ["#FFB3C7", "#FFC9D9", "#FF8FAB"];
+  var PARTICLE_MODES = {
+    onepiece: { colors: ["#FFB3C7", "#FFC9D9", "#FF8FAB"], shape: "petal", rise: false, count: 28, glow: 0 },
+    bleach: { colors: ["#BFEFFF", "#E8FBFF", "#8FEFFF"], shape: "orb", rise: true, count: 34, glow: 14 }
+  };
+  var particleMode = PARTICLE_MODES.onepiece;
   var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   function newPetal(anywhere) {
+    var colors = particleMode.colors;
     return {
       x: Math.random() * petalCanvas.width,
-      y: anywhere ? Math.random() * petalCanvas.height : -20,
+      y: anywhere ? Math.random() * petalCanvas.height : (particleMode.rise ? petalCanvas.height + 20 : -20),
       size: 6 + Math.random() * 9,
       speed: 30 + Math.random() * 55,
       sway: 20 + Math.random() * 40,
       phase: Math.random() * Math.PI * 2,
       rot: Math.random() * Math.PI * 2,
       rotSpeed: (Math.random() - 0.5) * 3,
-      color: PETAL_COLORS[(Math.random() * PETAL_COLORS.length) | 0],
+      color: colors[(Math.random() * colors.length) | 0],
       alpha: 0.55 + Math.random() * 0.35
     };
   }
@@ -131,10 +184,11 @@
     petalCtx.clearRect(0, 0, petalCanvas.width, petalCanvas.height);
     for (var i = 0; i < petals.length; i++) {
       var p = petals[i];
-      p.y += p.speed * dt;
+      p.y += (particleMode.rise ? -1 : 1) * p.speed * dt;
       p.x += Math.sin(t * 1.4 + p.phase) * p.sway * dt;
       p.rot += p.rotSpeed * dt;
-      if (p.y > petalCanvas.height + 24) { petals[i] = newPetal(false); continue; }
+      var out = particleMode.rise ? (p.y < -24) : (p.y > petalCanvas.height + 24);
+      if (out) { petals[i] = newPetal(false); continue; }
       petalCtx.save();
       petalCtx.translate(p.x, p.y);
       petalCtx.rotate(p.rot);
@@ -142,16 +196,24 @@
       petalCtx.fillStyle = p.color;
       var s = p.size;
       petalCtx.beginPath();
-      petalCtx.moveTo(0, -s);
-      petalCtx.bezierCurveTo(s * 0.9, -s * 0.6, s * 0.7, s * 0.6, 0, s);
-      petalCtx.bezierCurveTo(-s * 0.7, s * 0.6, -s * 0.9, -s * 0.6, 0, -s);
+      if (particleMode.shape === "orb") {
+        petalCtx.shadowBlur = particleMode.glow;
+        petalCtx.shadowColor = p.color;
+        petalCtx.arc(0, 0, s * 0.45, 0, Math.PI * 2);
+      } else {
+        petalCtx.moveTo(0, -s);
+        petalCtx.bezierCurveTo(s * 0.9, -s * 0.6, s * 0.7, s * 0.6, 0, s);
+        petalCtx.bezierCurveTo(-s * 0.7, s * 0.6, -s * 0.9, -s * 0.6, 0, -s);
+      }
       petalCtx.fill();
+      petalCtx.shadowBlur = 0;
       petalCtx.restore();
     }
   }
 
   function startPetals() {
     if (reduceMotion || petalCanvas) { return; }
+    particleMode = PARTICLE_MODES[animeSub] || PARTICLE_MODES.onepiece;
     petalCanvas = document.createElement("canvas");
     petalCanvas.id = "petals";
     petalCanvas.setAttribute("aria-hidden", "true");
@@ -160,7 +222,7 @@
     resizePetals();
     window.addEventListener("resize", resizePetals);
     petals = [];
-    for (var i = 0; i < 28; i++) { petals.push(newPetal(true)); }
+    for (var i = 0; i < particleMode.count; i++) { petals.push(newPetal(true)); }
     var last = performance.now();
     function frame(now) {
       var dt = Math.min((now - last) / 1000, 0.05);
@@ -169,6 +231,11 @@
       petalRaf = requestAnimationFrame(frame);
     }
     petalRaf = requestAnimationFrame(frame);
+  }
+
+  function restartPetals() {
+    stopPetals();
+    startPetals();
   }
 
   function stopPetals() {
