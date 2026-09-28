@@ -43,9 +43,36 @@
       var cur = root.getAttribute("data-theme");
       var next = THEMES[(THEMES.indexOf(cur) + 1) % THEMES.length];
       if (!next) { next = "light"; }
-      applyTheme(next);
+      if (next === "anime" && cur !== "anime" && !reduceMotion) {
+        playAnimeTransition(next);
+      } else {
+        applyTheme(next);
+      }
       try { localStorage.setItem(THEME_KEY, next); } catch (e) { /* ignore */ }
     });
+  }
+
+  /* ---------- dramatic entry transition into anime mode ---------- */
+  function playAnimeTransition(next) {
+    var ov = document.createElement("div");
+    ov.className = "anime-transition";
+    ov.setAttribute("aria-hidden", "true");
+    var flash = document.createElement("div");
+    flash.className = "at-flash";
+    var burst = document.createElement("div");
+    burst.className = "at-burst";
+    var don = document.createElement("span");
+    don.className = "at-don";
+    don.textContent = "ドン！";
+    burst.appendChild(don);
+    ov.appendChild(flash);
+    ov.appendChild(burst);
+    document.body.appendChild(ov);
+    window.setTimeout(function () { applyTheme(next); }, 200);
+    window.setTimeout(function () { ov.classList.add("at-out"); }, 950);
+    window.setTimeout(function () {
+      if (ov.parentNode) { ov.parentNode.removeChild(ov); }
+    }, 1350);
   }
 
   /* ---------- sakura petals (anime mode only) ---------- */
