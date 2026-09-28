@@ -724,3 +724,16 @@ footer {
   margin-top: 30px;
   padding-top: 26px;
 }
+
+/* ---- Blog index: classic article list ---- */
+.post-list { border-top: 1px solid var(--hairline); }
+.post-row { display: block; padding: 30px 4px; border-bottom: 1px solid var(--hairline); }
+.post-row-top { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 12px; }
+.post-row-top .post-meta { margin: 0; }
+.post-row h2 { font-size: clamp(1.35rem, 2.6vw, 1.9rem); font-weight: 700; letter-spacing: -0.015em; line-height: 1.25; margin: 0 0 10px; transition: color .2s ease; }
+.post-row p { color: var(--muted); margin: 0; max-width: 64ch; }
+.post-row-arrow { flex: none; width: 40px; height: 40px; border: 1px solid var(--hairline); border-radius: 50%; display: grid; place-items: center; color: var(--muted); transition: background .2s ease, color .2s ease, border-color .2s ease, transform .2s ease; }
+.post-row-arrow svg { width: 16px; height: 16px; }
+.post-row:hover h2 { color: var(--accent); }
+.post-row:hover .post-row-arrow { background: var(--ink); border-color: var(--ink); color: var(--bg); transform: translate(3px, -3px); }
+@media (max-width: 560px) { .post-row { padding: 24px 2px; } }
