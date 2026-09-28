@@ -1,0 +1,26 @@
+# Saurav Shrestha
+
+> Saurav Shrestha (also spelled Saurab Shrestha) is a Full Stack Developer
+> from Lalitpur, Nepal.
+
+## About
+Saurav Shrestha builds end-to-end products: Java and Spring Boot backends
+with RESTful APIs, React.js frontends, and MySQL data layers, plus IoT
+automation on ESP32 and Arduino (including a self-regulating greenhouse).
+Notable work: Poem Sansar (a social platform for poets), a Java book
+marketplace with secure sessions and role-based access, and 54.5 hours of
+robotics and UI/UX mentoring delivered to students across colleges in Nepal.
+
+## Online
+- Website: https://saurabshrestha.com.np/
+- GitHub: https://github.com/saurav73
+- Location: Bungmati, Lalitpur, Nepal
+- Email: sauravstha486@gmail.com
+
+## Site map
+- Home: https://saurabshrestha.com.np/
+- About: https://saurabshrestha.com.np/about.html
+- Work: https://saurabshrestha.com.np/work.html
+- Projects (live sites): https://saurabshrestha.com.np/projects.html
+- Blog (Java, IoT and React tutorials): https://saurabshrestha.com.np/blog.html
+- Contact: https://saurabshrestha.com.np/contact.html

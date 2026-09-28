@@ -889,3 +889,4 @@ footer {
 .post-row-arrow svg { width: 18px; height: 18px; }
 .post-row:hover .post-row-arrow { background: var(--ink); border-color: var(--ink); color: var(--bg); transform: translate(3px, -3px); }
 @media (max-width: 560px) { .post-row { padding: 24px 2px; } }
+.aka-note { font-size: .85em; color: var(--muted); }
