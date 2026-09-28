@@ -164,7 +164,18 @@ html[data-theme="anime"] .availability {
 html[data-theme="anime"] .pulse-dot { background: var(--accent-2); }
 html[data-theme="anime"] .pulse-dot::after { border-color: var(--accent-2); }
 
-html[data-theme="anime"] .label { color: var(--gold); }
+/* manga narrator caption boxes */
+html[data-theme="anime"] .label {
+  display: inline-block;
+  background: #0A0A0A;
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  padding: 7px 14px;
+  transform: skewX(-8deg) rotate(-1deg);
+  box-shadow: 4px 4px 0 rgba(255, 46, 76, .9);
+}
 
 /* ---------- Japanese section subtitles ---------- */
 html[data-theme="anime"] .jp-sub {
@@ -469,4 +480,66 @@ html[data-theme="anime"] .portrait-card img {
 @keyframes photo-kenburns {
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.06); }
+}
+
+/* ---------- content design: episode badges, marker ink, narrator details ---------- */
+/* episode numbering on every section, manga chapter style */
+html[data-theme="anime"] body { counter-reset: ep; }
+html[data-theme="anime"] .section-head h2::before {
+  counter-increment: ep;
+  content: "EP." counter(ep);
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .2em;
+  background: var(--accent-2);
+  color: #fff;
+  border: 2px solid #0A0A0A;
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, .5);
+  padding: 6px 10px;
+  margin-right: 14px;
+  vertical-align: middle;
+  transform: rotate(-2deg);
+}
+html[data-theme="anime"] .section-head h2,
+html[data-theme="anime"] .page-head h1 {
+  text-shadow: 4px 4px 0 rgba(0, 0, 0, .55);
+}
+
+/* marker highlight under the hero tagline */
+html[data-theme="anime"] .hero h1 .serif {
+  background: linear-gradient(transparent 60%, rgba(255, 46, 76, .5) 60%);
+  padding: 0 .1em;
+}
+
+/* lead paragraphs get a manga panel edge */
+html[data-theme="anime"] .lead {
+  border-left: 4px solid var(--accent-2);
+  padding-left: 18px;
+}
+
+/* experience dates become sticker badges */
+html[data-theme="anime"] .exp-date {
+  display: inline-block;
+  background: var(--accent);
+  color: #06222A;
+  border: 2px solid #0A0A0A;
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, .5);
+  padding: 5px 12px;
+  font-weight: 800;
+  transform: rotate(1deg);
+}
+
+/* card titles get ink punch */
+html[data-theme="anime"] .card h3 { text-shadow: 2px 2px 0 rgba(0, 0, 0, .45); }
+
+/* footer sign-off as a mini narrator box */
+html[data-theme="anime"] .footer-inner span:last-child {
+  background: #0A0A0A;
+  color: #fff;
+  padding: 5px 12px;
+  font-size: 12px;
+  letter-spacing: .08em;
+  transform: skewX(-8deg);
+  box-shadow: 3px 3px 0 rgba(69, 232, 255, .8);
 }
