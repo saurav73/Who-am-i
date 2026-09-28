@@ -569,8 +569,28 @@ html[data-theme="anime"][data-anime="bleach"] .hero h1 .serif {
 
 /* bleach portrait: hide the One Piece illustration, ink-style the real photo */
 html[data-theme="anime"][data-anime="bleach"] .portrait-card img.profile-anime { display: none; }
-html[data-theme="anime"][data-anime="bleach"] .portrait-card > img:not(.profile-anime) {
+html[data-theme="anime"][data-anime="bleach"] .portrait-card > img:not(.profile-anime):not(.profile-bleach) {
   filter: grayscale(1) contrast(1.35) brightness(1.03);
+}
+/* optional user-supplied Bleach art (profile-bleach.jpg) takes over when present */
+.profile-bleach { display: none; }
+html[data-theme="anime"][data-anime="bleach"] .portrait-card.has-bleach-art img.profile-bleach {
+  display: block;
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  width: calc(100% - 24px);
+  aspect-ratio: 4 / 4.6;
+  object-fit: cover;
+  border-radius: 18px;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0;
+  animation: photo-kenburns 9s ease-in-out infinite, anime-fadein 1.1s ease .1s forwards;
+}
+html[data-theme="anime"][data-anime="bleach"] .portrait-card.has-bleach-art .portrait-shine {
+  background: transparent;
+  mix-blend-mode: normal;
 }
 html[data-theme="anime"][data-anime="bleach"] .portrait-shine {
   background: rgba(255, 122, 26, .16);

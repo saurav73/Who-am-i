@@ -247,6 +247,27 @@
     petals = [];
   }
 
+  /* ---------- optional Bleach portrait art ----------
+     If assets/img/profile-bleach.jpg exists next to profile-anime.jpg,
+     it becomes the Bleach-mode portrait automatically; otherwise Bleach
+     mode falls back to the ink-styled photo. */
+  (function initBleachArt() {
+    var card = document.querySelector(".portrait-card");
+    var ref = document.querySelector(".profile-anime");
+    if (!card || !ref) { return; }
+    var src = ref.getAttribute("src");
+    if (!src || src.indexOf("profile-anime.jpg") === -1) { return; }
+    var img = document.createElement("img");
+    img.className = "profile-bleach";
+    img.alt = "";
+    img.setAttribute("aria-hidden", "true");
+    img.addEventListener("load", function () {
+      card.classList.add("has-bleach-art");
+    });
+    img.src = src.replace("profile-anime.jpg", "profile-bleach.jpg");
+    card.insertBefore(img, ref);
+  })();
+
   /* ---------- pill nav: hide on scroll down, show on scroll up ---------- */
   var nav = document.querySelector(".pill-nav");
   var lastY = window.scrollY || 0;
