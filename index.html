@@ -22,6 +22,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/anime.css">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -78,10 +79,11 @@
     </div>
     <span class="nav-divider" aria-hidden="true"></span>
     <div class="nav-group">
-      <button class="nav-btn" id="theme-toggle" data-tip="Toggle theme" aria-label="Toggle light and dark mode">
+      <button class="nav-btn" id="theme-toggle" data-tip="Toggle theme" aria-label="Switch theme">
         <span class="theme-icon" aria-hidden="true">
           <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M2.5 12h2.4M19.1 12h2.4M5.3 5.3l1.7 1.7M17 17l1.7 1.7M18.7 5.3 17 7M7 17l-1.7 1.7"/></svg>
           <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5Z"/></svg>
+          <svg class="icon-anime" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5 13.8 10 21.5 12 13.8 14 12 21.5 10.2 14 2.5 12 10.2 10Z"/><circle cx="12" cy="12" r="1.6"/></svg>
         </span>
       </button>
     </div>
@@ -91,11 +93,13 @@
 
     <!-- ======= Hero ======= -->
     <header class="hero">
+      <div class="speed-lines" aria-hidden="true"></div>
       <div class="hero-grid">
         <div>
+          <p class="anime-kicker">第1話 · THE DEVELOPER ARC</p>
           <span class="availability reveal"><span class="pulse-dot"></span>Available for work</span>
           <p class="label reveal">Tech Enthusiast | Developer</p>
-          <h1 class="reveal reveal-d1">Saurav Shrestha<br><span class="serif">building backends, apps &amp; automation.</span></h1>
+          <h1 class="reveal reveal-d1"><span class="anime-outline">Saurav Shrestha</span><br><span class="serif">building backends, apps &amp; automation.</span></h1>
           <p class="hero-sub reveal reveal-d2">Dynamic and passionate Full Stack Developer with strong backend expertise in Java and a solid understanding of frontend technologies including HTML, CSS, and React.js. Experienced in building full-stack applications, IoT-based automation systems, and engaging in tech community programs. Known for developing innovative solutions like Poem Sansar, a social platform for poets, and IoT-based greenhouse automation systems. Adept at both solo and collaborative work, with hands-on experience in mentoring, training, and delivering scalable applications.</p>
           <div class="hero-ctas reveal reveal-d3">
             <a class="btn btn-primary" href="work.html">View my work
@@ -110,6 +114,8 @@
         </div>
       </div>
 
+      <span class="jp-vertical" aria-hidden="true">ポートフォリオ</span>
+
       <div class="ticker reveal" aria-hidden="true">
         <div class="ticker-track">
           <span class="ticker-item">Java</span><span class="ticker-item">Spring Boot</span><span class="ticker-item">HTML</span><span class="ticker-item">CSS</span><span class="ticker-item">JavaScript</span><span class="ticker-item">React.js</span><span class="ticker-item">MySQL</span><span class="ticker-item">Arduino</span><span class="ticker-item">ESP32</span><span class="ticker-item">Git</span>
@@ -123,7 +129,7 @@
       <div class="section-head reveal">
         <div>
           <p class="label">Selected work</p>
-          <h2>Things I've built</h2>
+          <h2>Things I've built<span class="jp-sub">実績</span></h2>
         </div>
         <a class="text-link" href="work.html">All projects
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -165,7 +171,7 @@
       <div class="section-head reveal">
         <div>
           <p class="label">Experience</p>
-          <h2>Where I've worked</h2>
+          <h2>Where I've worked<span class="jp-sub">経験</span></h2>
         </div>
         <a class="text-link" href="about.html">Full story
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
