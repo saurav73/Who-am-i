@@ -41,6 +41,7 @@
       root.setAttribute("data-anime", animeSub);
       if (subBar) { subBar.hidden = false; }
       startPetals();
+      warmDomainChant(); /* preload Sukuna's chant so the first tap plays instantly */
     } else {
       if (subBar) { subBar.hidden = true; }
       stopPetals();
@@ -73,32 +74,37 @@
   }
   function playDomainChant() {
     try {
-      if (!domainAudio) {
-        domainAudio = new Audio(assetUrl("assets/audio/ryoiki-tenkai.mp3"));
-        domainAudio.preload = "auto";
-        domainAudio.volume = 0.9;
-      } else {
-        domainAudio.currentTime = 0;
-      }
+      warmDomainChant();
+      domainAudio.currentTime = 0;
       var p = domainAudio.play();
       if (p && p.catch) { p.catch(function () { /* autoplay blocked; ignore */ }); }
     } catch (e) { /* audio unsupported; stay silent */ }
   }
+  function warmDomainChant() {
+    try {
+      if (!domainAudio) {
+        domainAudio = new Audio(assetUrl("assets/audio/ryoiki-tenkai.mp3"));
+        domainAudio.preload = "auto";
+        domainAudio.volume = 0.9;
+      }
+    } catch (e) { /* ignore */ }
+  }
 
   function setAnimeSub(sub) {
     if (sub !== "onepiece" && sub !== "jjk") { return; }
-    var changed = (sub !== animeSub);
     animeSub = sub;
     try { localStorage.setItem(SUB_KEY, sub); } catch (e) { /* ignore */ }
     syncSubUI();
     if (root.getAttribute("data-theme") === "anime") { restartPetals(); }
-    if (sub === "jjk" && changed) { playDomainChant(); }
   }
 
   if (subBar) {
     subBar.addEventListener("click", function (ev) {
       var btn = ev.target && ev.target.closest ? ev.target.closest(".sub-tab") : null;
-      if (btn && btn.getAttribute("data-sub")) { setAnimeSub(btn.getAttribute("data-sub")); }
+      if (!btn || !btn.getAttribute("data-sub")) { return; }
+      var sub = btn.getAttribute("data-sub");
+      if (sub === "jjk") { playDomainChant(); } /* chant on every JJK tap */
+      setAnimeSub(sub);
     });
   }
 
