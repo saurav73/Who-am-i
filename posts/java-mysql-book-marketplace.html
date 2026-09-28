@@ -86,15 +86,17 @@
 
     </div>
   </nav>
-    <button class="mode-tab" id="anime-toggle" aria-pressed="false" aria-label="Toggle anime mode">
-      <svg class="mt-icon mt-hat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="15.5" rx="9.5" ry="3.2"/><path d="M7.4 15.3C7.4 10.2 9.4 7.6 12 7.6c2.6 0 4.6 2.6 4.6 7.7"/><path d="M7.5 13.6c2.8 1.1 6.2 1.1 9 0" stroke="#FF2E4C"/></svg>
-      <svg class="mt-icon mt-shrine" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7.5c3.5 1 6.5 1.4 10 1.4s6.5-.4 10-1.4"/><path d="M6 8.7v10.8M18 8.7v10.8"/><path d="M9.5 13h5"/></svg>
-      <span class="mt-to-anime">Anime mode</span>
-      <span class="mt-to-normal">Normal mode</span>
-    </button>
-    <div class="anime-sub" id="anime-sub" hidden>
-      <button class="sub-tab is-active" data-sub="onepiece">One Piece</button>
-      <button class="sub-tab" data-sub="jjk">Jujutsu Kaisen</button>
+    <div class="mode-cluster">
+      <button class="mode-tab" id="anime-toggle" aria-pressed="false" aria-label="Toggle anime mode">
+        <svg class="mt-icon mt-hat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="15.5" rx="9.5" ry="3.2"/><path d="M7.4 15.3C7.4 10.2 9.4 7.6 12 7.6c2.6 0 4.6 2.6 4.6 7.7"/><path d="M7.5 13.6c2.8 1.1 6.2 1.1 9 0" stroke="#FF2E4C"/></svg>
+        <svg class="mt-icon mt-shrine" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7.5c3.5 1 6.5 1.4 10 1.4s6.5-.4 10-1.4"/><path d="M6 8.7v10.8M18 8.7v10.8"/><path d="M9.5 13h5"/></svg>
+        <span class="mt-to-anime">Anime mode</span>
+        <span class="mt-to-normal">Normal mode</span>
+      </button>
+      <div class="anime-sub" id="anime-sub" hidden>
+        <button class="sub-tab is-active" data-sub="onepiece">One Piece</button>
+        <button class="sub-tab" data-sub="jjk">Jujutsu Kaisen</button>
+      </div>
     </div>
 
   <main class="wrap">

@@ -238,7 +238,7 @@ html[data-theme="anime"][data-anime="jjk"] .mode-tab .mt-shrine { display: block
   50% { box-shadow: -6px 0 20px rgba(255, 46, 76, .45); }
 }
 
-/* anime sub-mode switcher: One Piece / Bleach mini tabs under the main tab */
+/* anime sub-mode switcher: One Piece / Jujutsu Kaisen mini tabs under the main tab */
 .anime-sub {
   position: fixed;
   right: 0;
@@ -251,18 +251,19 @@ html[data-theme="anime"][data-anime="jjk"] .mode-tab .mt-shrine { display: block
 .anime-sub[hidden] { display: none; }
 .sub-tab {
   writing-mode: vertical-rl;
-  padding: 14px 10px;
+  padding: 10px 8px;
   background: var(--surface);
   color: var(--muted);
   border: 1px solid var(--hairline);
   border-right: none;
-  border-radius: 12px 0 0 12px;
+  border-radius: 10px 0 0 10px;
   box-shadow: -4px 0 14px rgba(0, 0, 0, .2);
   cursor: pointer;
-  font-size: 10px;
+  font-size: 9px;
   font-weight: 800;
-  letter-spacing: .22em;
+  letter-spacing: .18em;
   text-transform: uppercase;
+  white-space: nowrap;
   transition: background .25s ease, color .25s ease, box-shadow .25s ease;
 }
 .sub-tab:hover { color: var(--ink); }
@@ -271,6 +272,43 @@ html[data-theme="anime"][data-anime="jjk"] .mode-tab .mt-shrine { display: block
   color: #fff;
   border-color: #0A0A0A;
   box-shadow: -4px 0 18px rgba(255, 46, 76, .55);
+}
+
+/* mode cluster: bookmark tab + sub tabs ride as one centered unit so they
+   never spill off short viewports */
+.mode-cluster {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 900;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+.mode-cluster .mode-tab {
+  position: static;
+  transform: none;
+}
+.mode-cluster .anime-sub {
+  position: static;
+}
+.mode-cluster .anime-sub[hidden] { display: none; }
+
+/* short screens: shrink the whole cluster further */
+@media (max-height: 640px) {
+  .mode-cluster { gap: 6px; }
+  .mode-cluster .mode-tab {
+    font-size: 10px;
+    padding: 14px 9px;
+  }
+  .mode-cluster .sub-tab {
+    font-size: 8px;
+    letter-spacing: .14em;
+    padding: 8px 6px;
+  }
+  .mode-cluster .anime-sub { gap: 6px; }
 }
 
 /* ---------- hero ---------- */
