@@ -185,58 +185,49 @@ html[data-theme="anime"] .theme-icon .icon-sun,
 html[data-theme="anime"] .theme-icon .icon-moon { opacity: 0; transform: rotate(90deg) scale(.6); }
 html[data-theme="anime"] .theme-icon .icon-anime { opacity: 1; transform: rotate(0) scale(1); }
 
-/* normal/anime mode switch (right side of the pill nav) */
-.mode-switch {
-  display: inline-flex;
+/* anime mode tab: manga bookmark pinned to the right edge of the screen */
+.mode-tab {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 900;
+  writing-mode: vertical-rl;
+  display: flex;
   align-items: center;
-  gap: 8px;
-  height: 42px;
-  padding: 0 12px;
-  border: 1px solid var(--hairline);
-  border-radius: 999px;
-  background: transparent;
+  gap: 10px;
+  padding: 20px 11px;
+  background: var(--surface);
   color: var(--muted);
-  cursor: pointer;
-  transition: border-color .25s ease, box-shadow .25s ease;
-}
-.mode-switch:hover { border-color: var(--ink); }
-.ms-word {
-  font-size: 10.5px;
-  font-weight: 700;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  transition: color .25s ease;
-}
-.ms-track {
-  position: relative;
-  width: 42px;
-  height: 23px;
-  border-radius: 999px;
-  background: var(--accent-soft);
   border: 1px solid var(--hairline);
-  transition: background .25s ease, border-color .25s ease, box-shadow .25s ease;
+  border-right: none;
+  border-radius: 14px 0 0 14px;
+  box-shadow: -6px 0 20px rgba(0, 0, 0, .22);
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  transition: background .25s ease, color .25s ease, box-shadow .25s ease, border-color .25s ease;
+  animation: tab-beacon 3.2s ease-in-out infinite;
 }
-.ms-knob {
-  position: absolute;
-  top: 2px;
-  left: 2px;
-  width: 17px;
-  height: 17px;
-  border-radius: 50%;
-  background: var(--muted);
-  transition: transform .28s cubic-bezier(.34, 1.4, .44, 1), background .25s ease;
-}
-.mode-switch.active { border-color: #FF2E4C; }
-.mode-switch.active .ms-track {
+.mode-tab svg { width: 20px; height: 20px; }
+.mode-tab:hover { color: var(--ink); border-color: var(--ink); }
+.mode-tab .mt-to-normal { display: none; }
+.mode-tab.active {
   background: #FF2E4C;
-  border-color: #FF2E4C;
-  box-shadow: 0 0 12px rgba(255, 46, 76, .55);
+  border-color: #0A0A0A;
+  color: #fff;
+  box-shadow: -6px 0 28px rgba(255, 46, 76, .6), -6px 6px 0 rgba(0, 0, 0, .45);
+  animation: none;
 }
-.mode-switch.active .ms-knob { transform: translateX(19px); background: #fff; }
-.mode-switch.active .ms-word:last-child { color: #FF2E4C; }
-@media (max-width: 720px) {
-  .mode-switch .ms-word { display: none; }
-  .mode-switch { padding: 0 9px; }
+.mode-tab.active:hover { color: #fff; border-color: #0A0A0A; }
+.mode-tab.active .mt-to-anime { display: none; }
+.mode-tab.active .mt-to-normal { display: block; }
+.mode-tab.active svg path:last-child { stroke: #fff; }
+@keyframes tab-beacon {
+  0%, 100% { box-shadow: -6px 0 20px rgba(0, 0, 0, .22); }
+  50% { box-shadow: -6px 0 20px rgba(255, 46, 76, .45); }
 }
 
 /* ---------- hero ---------- */
@@ -710,6 +701,7 @@ footer {
   .reveal { opacity: 1; transform: none; transition: none; }
   .ticker-track { animation: none; }
   .pulse-dot::after { animation: none; }
+  .mode-tab { animation: none; }
   html { scroll-behavior: auto; }
 }
 

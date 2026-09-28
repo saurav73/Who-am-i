@@ -145,7 +145,7 @@ html[data-theme="anime"] .hero h1 .anime-outline {
 html[data-theme="anime"] .jp-vertical {
   display: block;
   position: absolute;
-  right: 1.5%;
+  right: 54px;
   top: 150px;
   writing-mode: vertical-rl;
   font-size: 15px;
