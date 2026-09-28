@@ -13,11 +13,11 @@
   var animeBtn = document.getElementById("anime-toggle");
   var lastNormal = "light"; /* last non-anime theme, used when leaving anime mode */
   var SUB_KEY = "ss-anime-sub";
-  var animeSub = "onepiece"; /* anime sub-mode: "onepiece" | "bleach" */
+  var animeSub = "onepiece"; /* anime sub-mode: "onepiece" | "jjk" */
   var subBar = document.getElementById("anime-sub");
   var KICKERS = {
     onepiece: "第1話 · THE DEVELOPER ARC",
-    bleach: "第1話 · THE SOUL REAPER ARC"
+    jjk: "呪術廻戦 · MALEVOLENT SHRINE"
   };
 
   function updateToggleLabel(theme) {
@@ -47,7 +47,7 @@
     }
   }
 
-  /* anime sub-modes: One Piece / Bleach */
+  /* anime sub-modes: One Piece / Jujutsu Kaisen */
   function syncSubUI() {
     root.setAttribute("data-anime", animeSub);
     if (subBar) {
@@ -61,7 +61,7 @@
   }
 
   function setAnimeSub(sub) {
-    if (sub !== "onepiece" && sub !== "bleach") { return; }
+    if (sub !== "onepiece" && sub !== "jjk") { return; }
     animeSub = sub;
     try { localStorage.setItem(SUB_KEY, sub); } catch (e) { /* ignore */ }
     syncSubUI();
@@ -80,7 +80,11 @@
     try { saved = localStorage.getItem(THEME_KEY); } catch (e) { /* ignore */ }
     try {
       var savedSub = localStorage.getItem(SUB_KEY);
-      if (savedSub === "onepiece" || savedSub === "bleach") { animeSub = savedSub; }
+      if (savedSub === "bleach") {
+        savedSub = "jjk"; /* Bleach retired; carry fans into the shrine */
+        try { localStorage.setItem(SUB_KEY, "jjk"); } catch (e) { /* ignore */ }
+      }
+      if (savedSub === "onepiece" || savedSub === "jjk") { animeSub = savedSub; }
     } catch (e) { /* ignore */ }
     syncSubUI();
     var prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
@@ -129,11 +133,11 @@
     burst.className = "at-burst";
     var don = document.createElement("span");
     don.className = "at-don";
-    don.textContent = animeSub === "bleach" ? "斬！" : "ドン！";
-    if (animeSub === "bleach") { ov.classList.add("at-bleach"); }
+    don.textContent = animeSub === "jjk" ? "領域展開" : "ドン！";
+    if (animeSub === "jjk") { ov.classList.add("at-jjk"); }
     var sub = document.createElement("span");
     sub.className = "at-sub";
-    sub.textContent = "ANIME MODE";
+    sub.textContent = animeSub === "jjk" ? "MALEVOLENT SHRINE" : "ANIME MODE";
     burst.appendChild(don);
     burst.appendChild(sub);
     ov.appendChild(flash);
@@ -153,7 +157,7 @@
   var petals = [];
   var PARTICLE_MODES = {
     onepiece: { colors: ["#FFB3C7", "#FFC9D9", "#FF8FAB"], shape: "petal", rise: false, count: 28, glow: 0 },
-    bleach: { colors: ["#BFEFFF", "#E8FBFF", "#8FEFFF"], shape: "orb", rise: true, count: 34, glow: 14 }
+    jjk: { colors: ["#FF6B6B", "#E5383B", "#FF8C42"], shape: "orb", rise: true, count: 42, glow: 12 }
   };
   var particleMode = PARTICLE_MODES.onepiece;
   var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -247,24 +251,24 @@
     petals = [];
   }
 
-  /* ---------- optional Bleach portrait art ----------
-     If assets/img/profile-bleach.jpg exists next to profile-anime.jpg,
-     it becomes the Bleach-mode portrait automatically; otherwise Bleach
-     mode falls back to the ink-styled photo. */
-  (function initBleachArt() {
+  /* ---------- optional JJK portrait art ----------
+     If assets/img/profile-jjk.jpg exists next to profile-anime.jpg,
+     it becomes the JJK-mode portrait automatically; otherwise JJK
+     mode falls back to the curse-tinted photo. */
+  (function initJjkArt() {
     var card = document.querySelector(".portrait-card");
     var ref = document.querySelector(".profile-anime");
     if (!card || !ref) { return; }
     var src = ref.getAttribute("src");
     if (!src || src.indexOf("profile-anime.jpg") === -1) { return; }
     var img = document.createElement("img");
-    img.className = "profile-bleach";
+    img.className = "profile-jjk";
     img.alt = "";
     img.setAttribute("aria-hidden", "true");
     img.addEventListener("load", function () {
-      card.classList.add("has-bleach-art");
+      card.classList.add("has-jjk-art");
     });
-    img.src = src.replace("profile-anime.jpg", "profile-bleach.jpg");
+    img.src = src.replace("profile-anime.jpg", "profile-jjk.jpg");
     card.insertBefore(img, ref);
   })();
 
