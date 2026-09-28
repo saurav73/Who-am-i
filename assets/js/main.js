@@ -60,12 +60,39 @@
     if (kicker && KICKERS[animeSub]) { kicker.textContent = KICKERS[animeSub]; }
   }
 
+  /* Sukuna's domain chant, voiced when the Jujutsu Kaisen tab is chosen */
+  var domainAudio = null;
+  function assetUrl(path) {
+    var scripts = document.getElementsByTagName("script");
+    for (var i = scripts.length - 1; i >= 0; i--) {
+      var s = scripts[i].getAttribute("src") || "";
+      var m = s.match(/^(.*)assets\/js\/main\.js/);
+      if (m) { return m[1] + path; }
+    }
+    return path;
+  }
+  function playDomainChant() {
+    try {
+      if (!domainAudio) {
+        domainAudio = new Audio(assetUrl("assets/audio/ryoiki-tenkai.mp3"));
+        domainAudio.preload = "auto";
+        domainAudio.volume = 0.9;
+      } else {
+        domainAudio.currentTime = 0;
+      }
+      var p = domainAudio.play();
+      if (p && p.catch) { p.catch(function () { /* autoplay blocked; ignore */ }); }
+    } catch (e) { /* audio unsupported; stay silent */ }
+  }
+
   function setAnimeSub(sub) {
     if (sub !== "onepiece" && sub !== "jjk") { return; }
+    var changed = (sub !== animeSub);
     animeSub = sub;
     try { localStorage.setItem(SUB_KEY, sub); } catch (e) { /* ignore */ }
     syncSubUI();
     if (root.getAttribute("data-theme") === "anime") { restartPetals(); }
+    if (sub === "jjk" && changed) { playDomainChant(); }
   }
 
   if (subBar) {
