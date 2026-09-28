@@ -191,8 +191,11 @@ html[data-theme="anime"] .theme-icon .icon-anime { opacity: 1; transform: rotate
   background: rgba(255, 46, 76, .12);
 }
 #anime-toggle.active:hover { color: #FF2E4C; }
-#anime-toggle.active svg { animation: anime-spin 7s linear infinite; }
-@keyframes anime-spin { to { transform: rotate(360deg); } }
+#anime-toggle.active svg { animation: hat-tip 2.6s ease-in-out infinite; }
+@keyframes hat-tip {
+  0%, 100% { transform: rotate(-8deg); }
+  50% { transform: rotate(8deg); }
+}
 
 /* ---------- hero ---------- */
 .hero {
