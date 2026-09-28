@@ -12,8 +12,8 @@
   var toggleBtn = document.getElementById("theme-toggle");
   var animeBtn = document.getElementById("anime-toggle");
   var lastNormal = "light"; /* last non-anime theme, used when leaving anime mode */
-  var SUB_KEY = "ss-anime-sub";
-  var animeSub = "onepiece"; /* anime sub-mode: "onepiece" | "jjk" */
+  var SUB_KEY = "ss-anime-sub-v2"; /* v2: default sub-mode is now JJK */
+  var animeSub = "jjk"; /* anime sub-mode: "onepiece" | "jjk" */
   var subBar = document.getElementById("anime-sub");
   var KICKERS = {
     onepiece: "第1話 · THE DEVELOPER ARC",
@@ -193,7 +193,7 @@
     onepiece: { colors: ["#FFB3C7", "#FFC9D9", "#FF8FAB"], shape: "petal", rise: false, count: 28, glow: 0 },
     jjk: { colors: ["#FF6B6B", "#E5383B", "#FF8C42"], shape: "orb", rise: true, count: 42, glow: 12 }
   };
-  var particleMode = PARTICLE_MODES.onepiece;
+  var particleMode = PARTICLE_MODES.jjk;
   var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   function newPetal(anywhere) {
