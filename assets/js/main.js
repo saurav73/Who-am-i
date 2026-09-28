@@ -83,7 +83,11 @@
     var don = document.createElement("span");
     don.className = "at-don";
     don.textContent = "ドン！";
+    var sub = document.createElement("span");
+    sub.className = "at-sub";
+    sub.textContent = "ANIME MODE";
     burst.appendChild(don);
+    burst.appendChild(sub);
     ov.appendChild(flash);
     ov.appendChild(burst);
     document.body.appendChild(ov);

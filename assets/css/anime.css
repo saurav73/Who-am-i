@@ -423,7 +423,7 @@ html[data-theme="anime"] .portrait-card::after {
 }
 @keyframes at-flash { 0% { opacity: 0; } 25% { opacity: 1; } 100% { opacity: 0; } }
 .anime-transition .at-burst {
-  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;
   background: #0A0A1C; opacity: 0; overflow: hidden;
   animation: at-burst-in .25s ease .18s forwards;
 }
@@ -443,6 +443,21 @@ html[data-theme="anime"] .portrait-card::after {
   animation: at-don-pop .5s cubic-bezier(.18, 2.4, .4, 1) .3s forwards;
 }
 @keyframes at-don-pop { to { transform: scale(1) rotate(-8deg); opacity: 1; } }
+.anime-transition .at-sub {
+  position: relative;
+  margin-top: 20px;
+  font-weight: 800;
+  font-size: clamp(20px, 4vw, 44px);
+  letter-spacing: .35em;
+  text-indent: .35em;
+  color: #fff;
+  -webkit-text-stroke: 1px #0A0A1C;
+  text-shadow: 4px 4px 0 #FF2E4C;
+  opacity: 0;
+  transform: translateY(16px);
+  animation: at-sub-in .45s ease .6s forwards;
+}
+@keyframes at-sub-in { to { opacity: 1; transform: translateY(0); } }
 .anime-transition.at-out { animation: at-out .35s ease forwards; }
 @keyframes at-out { to { opacity: 0; visibility: hidden; } }
 
