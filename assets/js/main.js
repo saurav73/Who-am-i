@@ -10,6 +10,8 @@
   var THEME_COLORS = { light: "#FBFBF9", dark: "#0C0C0E", anime: "#0A0A1C" };
   var metaTheme = document.querySelector('meta[name="theme-color"]');
   var toggleBtn = document.getElementById("theme-toggle");
+  var animeBtn = document.getElementById("anime-toggle");
+  var lastNormal = "light"; /* last non-anime theme, used when leaving anime mode */
 
   function updateToggleLabel(theme) {
     if (toggleBtn) {
@@ -22,6 +24,11 @@
     if (metaTheme) {
       metaTheme.setAttribute("content", THEME_COLORS[theme] || THEME_COLORS.light);
     }
+    if (theme === "light" || theme === "dark") { lastNormal = theme; }
+    if (animeBtn) {
+      animeBtn.classList.toggle("active", theme === "anime");
+      animeBtn.setAttribute("aria-pressed", theme === "anime" ? "true" : "false");
+    }
     updateToggleLabel(theme);
     if (theme === "anime") { startPetals(); } else { stopPetals(); }
   }
@@ -29,21 +36,33 @@
   function initTheme() {
     var saved = null;
     try { saved = localStorage.getItem(THEME_KEY); } catch (e) { /* ignore */ }
+    var prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
     if (THEMES.indexOf(saved) !== -1) {
+      if (saved === "anime") { lastNormal = prefersDark ? "dark" : "light"; }
       applyTheme(saved);
-    } else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+    } else if (prefersDark) {
       applyTheme("dark");
     } else {
       applyTheme("light");
     }
   }
 
+  /* light/dark toggle (also exits anime mode back to the previous theme) */
   if (toggleBtn) {
     toggleBtn.addEventListener("click", function () {
       var cur = root.getAttribute("data-theme");
-      var next = THEMES[(THEMES.indexOf(cur) + 1) % THEMES.length];
-      if (!next) { next = "light"; }
-      if (next === "anime" && cur !== "anime" && !reduceMotion) {
+      var next = cur === "anime" ? lastNormal : (cur === "dark" ? "light" : "dark");
+      applyTheme(next);
+      try { localStorage.setItem(THEME_KEY, next); } catch (e) { /* ignore */ }
+    });
+  }
+
+  /* dedicated anime mode button */
+  if (animeBtn) {
+    animeBtn.addEventListener("click", function () {
+      var cur = root.getAttribute("data-theme");
+      var next = cur === "anime" ? lastNormal : "anime";
+      if (next === "anime" && !reduceMotion) {
         playAnimeTransition(next);
       } else {
         applyTheme(next);

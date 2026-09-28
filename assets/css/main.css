@@ -185,6 +185,15 @@ html[data-theme="anime"] .theme-icon .icon-sun,
 html[data-theme="anime"] .theme-icon .icon-moon { opacity: 0; transform: rotate(90deg) scale(.6); }
 html[data-theme="anime"] .theme-icon .icon-anime { opacity: 1; transform: rotate(0) scale(1); }
 
+/* dedicated anime mode button */
+#anime-toggle.active {
+  color: #FF2E4C;
+  background: rgba(255, 46, 76, .12);
+}
+#anime-toggle.active:hover { color: #FF2E4C; }
+#anime-toggle.active svg { animation: anime-spin 7s linear infinite; }
+@keyframes anime-spin { to { transform: rotate(360deg); } }
+
 /* ---------- hero ---------- */
 .hero {
   padding: 150px 0 40px;

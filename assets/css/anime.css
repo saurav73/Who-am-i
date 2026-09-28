@@ -336,7 +336,8 @@ html[data-theme="anime"] footer { border-top: 3px solid #0A0A0A; }
   html[data-theme="anime"] .grid-2 > .card { transform: none; }
   html[data-theme="anime"] .portrait-card,
   html[data-theme="anime"] .straw-hat,
-  html[data-theme="anime"] .portrait-card::after { animation: none; }
+  html[data-theme="anime"] .portrait-card::after,
+  html[data-theme="anime"] .portrait-card img { animation: none; }
 }
 
 /* ---------- Luffy straw hat (portrait, anime mode only) ---------- */
@@ -416,3 +417,13 @@ html[data-theme="anime"] .portrait-card::after {
 @keyframes at-don-pop { to { transform: scale(1) rotate(-8deg); opacity: 1; } }
 .anime-transition.at-out { animation: at-out .35s ease forwards; }
 @keyframes at-out { to { opacity: 0; visibility: hidden; } }
+
+/* ---------- animated portrait photo ---------- */
+html[data-theme="anime"] .portrait-card img {
+  filter: saturate(1.28) contrast(1.06);
+  animation: photo-kenburns 9s ease-in-out infinite;
+}
+@keyframes photo-kenburns {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+}
