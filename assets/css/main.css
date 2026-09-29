@@ -890,3 +890,8 @@ footer {
 .post-row:hover .post-row-arrow { background: var(--ink); border-color: var(--ink); color: var(--bg); transform: translate(3px, -3px); }
 @media (max-width: 560px) { .post-row { padding: 24px 2px; } }
 .aka-note { font-size: .85em; color: var(--muted); }
+
+/* Native ad rows: blend with the feed so they read as part of the list */
+.post-row-ad { padding: 26px 4px; border-bottom: 1px solid var(--hairline); }
+.post-row-ad:empty { display: none; }
+.article-body .post-row-ad { padding: 30px 0; border-bottom: none; }

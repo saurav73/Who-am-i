@@ -10,8 +10,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/css/main.css?v=20260929c">
-  <link rel="stylesheet" href="../assets/css/anime.css?v=20260929c">
+  <link rel="stylesheet" href="../assets/css/main.css?v=20260929d">
+  <link rel="stylesheet" href="../assets/css/anime.css?v=20260929d">
   <link rel="canonical" href="https://saurabshrestha.com.np/posts/spring-boot-rest-api-best-practices.html">
   <meta property="og:title" content="Spring Boot REST API Best Practices: Field Guide">
   <meta property="og:description" content="Spring Boot REST API best practices from real projects: layered architecture, validation, error handling and MySQL setup. A practical field guide for Java devs.">
@@ -32,6 +32,7 @@
   "url": "https://saurabshrestha.com.np/posts/spring-boot-rest-api-best-practices.html"
 }
   </script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1184879199231987" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -116,6 +117,18 @@
           <li><strong>Repository:</strong> talks to the database, ideally through Spring Data JPA interfaces.</li>
         </ul>
         <p>When I moved booking validation out of my controller and into a <code>BookingService</code>, the controller shrank from 80 lines to 20, and suddenly I could test the rules without spinning up HTTP at all.</p>
+
+        <div class="post-row-ad" aria-hidden="true">
+          <ins class="adsbygoogle"
+               style="display:block; text-align:center;"
+               data-ad-layout="in-article"
+               data-ad-format="fluid"
+               data-ad-client="ca-pub-1184879199231987"
+               data-ad-slot="4185733491"></ins>
+          <script>
+               (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
 
         <h2>Validate at the door</h2>
         <p>Never trust the request body. Jakarta validation annotations let you declare the rules right on your DTO, and Spring enforces them before your code even runs. Here is a booking request object from my project:</p>
@@ -209,6 +222,6 @@ public Page&lt;RoomResponse&gt; listRooms(
     </div>
   </footer>
 
-  <script src="../assets/js/main.js?v=20260929c"></script>
+  <script src="../assets/js/main.js?v=20260929d"></script>
 </body>
 </html>

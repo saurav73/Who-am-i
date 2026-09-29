@@ -10,8 +10,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/css/main.css?v=20260929c">
-  <link rel="stylesheet" href="../assets/css/anime.css?v=20260929c">
+  <link rel="stylesheet" href="../assets/css/main.css?v=20260929d">
+  <link rel="stylesheet" href="../assets/css/anime.css?v=20260929d">
   <link rel="canonical" href="https://saurabshrestha.com.np/posts/java-mysql-book-marketplace.html">
   <meta property="og:title" content="Build a Book Marketplace with Java and MySQL">
   <meta property="og:description" content="How to build a used second-hand book marketplace with Java and MySQL: REST APIs, authentication, user roles and session handling, explained for beginners.">
@@ -36,6 +36,7 @@
   "url": "https://saurabshrestha.com.np/posts/java-mysql-book-marketplace.html"
 }
   </script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1184879199231987" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -135,6 +136,18 @@ CREATE TABLE books (
 );</code></pre>
         <p>Two decisions here paid off later. The <code>listing_type</code> column meant one table served selling, exchanging, and donating instead of three parallel features. And the <code>status</code> column gave every book a simple lifecycle: available, reserved while a deal is discussed, gone when it changes hands.</p>
 
+        <div class="post-row-ad" aria-hidden="true">
+          <ins class="adsbygoogle"
+               style="display:block; text-align:center;"
+               data-ad-layout="in-article"
+               data-ad-format="fluid"
+               data-ad-client="ca-pub-1184879199231987"
+               data-ad-slot="4185733491"></ins>
+          <script>
+               (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+
         <h2>Auth before features</h2>
         <p>It is tempting to build the fun parts first and bolt on login later. Do not. Authentication touches every feature, so build it on day one. My rules were simple: never store plain-text passwords, never trust the client about who is logged in, and expire sessions.</p>
         <p>Passwords were hashed with BCrypt, which is deliberately slow to make brute force attacks expensive. On login, the server checked the hash, then created a session holding only the user id and role. Every protected endpoint started by asking one question: is there a valid session, and does this user own this resource? That single check, applied consistently, prevented the entire category of "user A edits user B's listing" bugs.</p>
@@ -182,6 +195,6 @@ CREATE TABLE books (
     </div>
   </footer>
 
-  <script src="../assets/js/main.js?v=20260929c"></script>
+  <script src="../assets/js/main.js?v=20260929d"></script>
 </body>
 </html>

@@ -10,8 +10,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/css/main.css?v=20260929c">
-  <link rel="stylesheet" href="../assets/css/anime.css?v=20260929c">
+  <link rel="stylesheet" href="../assets/css/main.css?v=20260929d">
+  <link rel="stylesheet" href="../assets/css/anime.css?v=20260929d">
   <link rel="canonical" href="https://saurabshrestha.com.np/posts/esp32-home-automation-nepal.html">
   <meta property="og:title" content="ESP32 Home Automation in Nepal: Beginner's Guide">
   <meta property="og:description" content="Learn ESP32 home automation in Nepal: wiring a DHT11 sensor, reading temperature data and controlling relays. A beginner-friendly IoT guide with code.">
@@ -32,6 +32,7 @@
   "url": "https://saurabshrestha.com.np/posts/esp32-home-automation-nepal.html"
 }
   </script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1184879199231987" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -111,6 +112,18 @@
         <h2>Why the ESP32</h2>
         <p>If you are choosing your first microcontroller for home automation, the ESP32 is the obvious pick. It costs a few hundred rupees at electronics shops around New Road in Kathmandu, it has built-in WiFi and Bluetooth, plenty of GPIO pins, and it runs on 3.3V logic that plays nicely with common sensors. The Arduino Uno is a fine learning board, but the moment you want your device on the network, the ESP32 saves you an extra WiFi module and a headache.</p>
         <p>For this guide you will need an ESP32 dev board, a DHT11 temperature and humidity sensor, a single-channel 5V relay module, a few jumper wires, a breadboard, and a reliable 5V 2A adapter. That last item matters more than you think, which I will explain below.</p>
+
+        <div class="post-row-ad" aria-hidden="true">
+          <ins class="adsbygoogle"
+               style="display:block; text-align:center;"
+               data-ad-layout="in-article"
+               data-ad-format="fluid"
+               data-ad-client="ca-pub-1184879199231987"
+               data-ad-slot="4185733491"></ins>
+          <script>
+               (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
 
         <h2>Wiring the DHT11</h2>
         <p>The DHT11 is the classic beginner sensor. It reports temperature and humidity over a single digital pin, which keeps wiring trivial. Connect its VCC to the ESP32's 3V3 pin, GND to GND, and the data pin to GPIO 15. Install the <code>DHT sensor library</code> by Adafruit in the Arduino IDE, select your ESP32 board, and flash this sketch:</p>
@@ -202,6 +215,6 @@ void loop() {
     </div>
   </footer>
 
-  <script src="../assets/js/main.js?v=20260929c"></script>
+  <script src="../assets/js/main.js?v=20260929d"></script>
 </body>
 </html>
