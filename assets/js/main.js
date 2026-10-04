@@ -297,7 +297,7 @@
     if (!src || src.indexOf("profile-anime.jpg") === -1) { return; }
     var img = document.createElement("img");
     img.className = "profile-jjk";
-    img.alt = "";
+    img.alt = "Sukuna-inspired anime portrait of Saurav Shrestha";
     img.setAttribute("aria-hidden", "true");
     img.addEventListener("load", function () {
       card.classList.add("has-jjk-art");
