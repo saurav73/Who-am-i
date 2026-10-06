@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/css/main.css?v=20260929e">
+  <link rel="stylesheet" href="../assets/css/main.css?v=20261006a">
   <link rel="stylesheet" href="../assets/css/anime.css?v=20260929e">
   <link rel="canonical" href="https://saurabshrestha.com.np/posts/spring-boot-jwt-authentication-react.html">
   <meta property="og:title" content="JWT Authentication in Spring Boot and React: Beginner Guide">
@@ -109,6 +109,17 @@
 
       <div class="article-body reveal">
         <p class="lead">The first time I added login to a Spring Boot and React app, I tried to force session cookies through CORS and spent two days debugging. The cleaner answer is JWT: the server hands the client a signed token at login, and the client attaches it to every request. Here is the whole flow, end to end, in the smallest version that actually works.</p>
+
+        <div class="key-takeaways">
+          <h2>Key takeaways</h2>
+          <ul>
+            <li>JWT authentication: the server issues a signed token at login, and the client attaches it as an <code>Authorization</code> header on every request instead of relying on session cookies.</li>
+            <li>A Spring Security filter verifies the token on each request, so no server-side session storage is needed.</li>
+            <li>Store tokens in memory (React state or context), not <code>localStorage</code>: any script on the page can read <code>localStorage</code>, so one cross-site scripting hole leaks every token.</li>
+            <li>Set tokens to expire, with fifteen minutes as a common starting point; a token that lives forever is a stolen credential that works forever.</li>
+            <li>When the backend starts answering 401, send the user back to login; refresh tokens can later rotate credentials silently without another login.</li>
+          </ul>
+        </div>
 
         <h2>What a JWT is</h2>
         <p>A JSON Web Token is three Base64 parts joined by dots: a header, a payload, and a signature. The payload carries claims like the username and an expiry time. The signature is created with a secret that only your server knows, so the server can verify the token is genuine without storing it anywhere. A token is signed, not encrypted: anyone can read the payload, so never put secrets in it. What makes it safe is that nobody can forge the signature without your secret.</p>

@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/css/main.css?v=20260929e">
+  <link rel="stylesheet" href="../assets/css/main.css?v=20261006a">
   <link rel="stylesheet" href="../assets/css/anime.css?v=20260929e">
   <link rel="canonical" href="https://saurabshrestha.com.np/posts/react-spring-boot-cors-errors.html">
   <meta property="og:title" content="React and Spring Boot CORS Errors: A Beginner's Fix Guide">
@@ -109,6 +109,17 @@
 
       <div class="article-body reveal">
         <p class="lead">My API worked perfectly in Postman. Every endpoint returned clean JSON. Then I pointed my React app at it, and the browser refused to touch it. If that sequence sounds familiar, you have met CORS, the most searched full-stack beginner error, and the fix takes ten minutes once you understand what the browser is doing.</p>
+
+        <div class="key-takeaways">
+          <h2>Key takeaways</h2>
+          <ul>
+            <li>CORS is a browser security rule, not a backend bug: an API that works in Postman but fails from React with "blocked by CORS policy" almost always needs server-side CORS configuration.</li>
+            <li>Configure allowed origins once with a global <code>WebMvcConfigurer</code> class instead of sprinkling <code>@CrossOrigin</code> on every controller.</li>
+            <li>When Spring Security is present, the security filter chain rejects the <code>OPTIONS</code> preflight before CORS rules apply: wire CORS in with <code>http.cors()</code> plus a <code>CorsConfigurationSource</code> bean.</li>
+            <li>Never combine <code>allowedOrigins("*")</code> with <code>allowCredentials(true)</code>; browsers reject that combination outright.</li>
+            <li>For local development only, a React dev-server proxy (<code>"proxy": "http://localhost:8080"</code> in package.json) sidesteps CORS; it does not exist in production.</li>
+          </ul>
+        </div>
 
         <h2>What CORS actually is</h2>
         <p>CORS stands for Cross-Origin Resource Sharing, and it is a browser security rule, not a bug. An "origin" is the combination of protocol, host, and port. Your React app on <code>http://localhost:3000</code> and your Spring Boot API on <code>http://localhost:8080</code> are two different origins, so the browser blocks the response unless the server explicitly allows it. The server still receives the request and processes it; the browser just throws the response away. That is why the error feels so strange: the backend did its job, and the frontend never sees the result.</p>

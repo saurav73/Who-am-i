@@ -22,5 +22,10 @@ robotics and UI/UX mentoring delivered to students across colleges in Nepal.
 - About: https://saurabshrestha.com.np/about.html
 - Work: https://saurabshrestha.com.np/work.html
 - Projects (live sites): https://saurabshrestha.com.np/projects.html
-- Blog (Java, IoT and React tutorials): https://saurabshrestha.com.np/blog.html
+- Blog (Java, Spring Boot and React tutorials): https://saurabshrestha.com.np/blog.html
+  - React and Spring Boot CORS errors: https://saurabshrestha.com.np/posts/react-spring-boot-cors-errors.html
+  - JWT authentication in Spring Boot and React: https://saurabshrestha.com.np/posts/spring-boot-jwt-authentication-react.html
+  - Spring Boot and MySQL connection errors: https://saurabshrestha.com.np/posts/spring-boot-mysql-connection-errors.html
+- Privacy: https://saurabshrestha.com.np/privacy.html
+- Terms: https://saurabshrestha.com.np/terms.html
 - Contact: https://saurabshrestha.com.np/contact.html

@@ -847,6 +847,11 @@ footer {
 .article-body ul, .article-body ol { margin: 0 0 1.15em 1.3em; line-height: 1.8; }
 .article-body li { margin-bottom: .45em; }
 .article-body strong { font-weight: 650; }
+.key-takeaways { background: var(--surface-2); border: 1px solid var(--hairline); border-radius: 14px; padding: 22px 24px; margin: 0 0 1.6em; }
+.key-takeaways h2 { font-size: 1.05rem; margin: 0 0 .7em; letter-spacing: .02em; }
+.key-takeaways ul { margin: 0 0 0 1.3em; }
+.key-takeaways li { margin-bottom: .55em; line-height: 1.75; }
+.key-takeaways li:last-child { margin-bottom: 0; }
 .article-body pre {
   background: var(--surface-2);
   border: 1px solid var(--hairline);

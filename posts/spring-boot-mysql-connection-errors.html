@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/css/main.css?v=20260929e">
+  <link rel="stylesheet" href="../assets/css/main.css?v=20261006a">
   <link rel="stylesheet" href="../assets/css/anime.css?v=20260929e">
   <link rel="canonical" href="https://saurabshrestha.com.np/posts/spring-boot-mysql-connection-errors.html">
   <meta property="og:title" content="Spring Boot MySQL Connection Errors: Fixes That Work">
@@ -109,6 +109,17 @@
 
       <div class="article-body reveal">
         <p class="lead">A shocking number of first Spring Boot and MySQL projects never get past startup. The app dies with a wall of red text, and the beginner is stuck before writing a single query. I have watched this happen in every project lab I have been in, and the fix is almost always one of the same five problems. Here they are, with the fix for each.</p>
+
+        <div class="key-takeaways">
+          <h2>Key takeaways</h2>
+          <ul>
+            <li><strong>"Failed to configure a DataSource"</strong> means Spring Boot could not build a connection at all: the MySQL driver dependency is missing or the connection properties are misspelled; your pom.xml needs both JPA and the driver.</li>
+            <li><strong>"Access denied for user 'root'@'localhost'"</strong> means MySQL is running and reachable but rejected the credentials: verify the username and password with the MySQL client directly before touching Spring.</li>
+            <li><strong>"Unknown database"</strong> means the database itself does not exist: Spring Boot can create tables with <code>ddl-auto</code> but never creates the database; create it once with <code>CREATE DATABASE</code>.</li>
+            <li><strong>"Communications link failure"</strong> means the driver could not reach MySQL: check the server is running, the port (3306 by default), and that the JDBC URL points at the right host.</li>
+            <li><strong>Timezone and SSL warnings</strong> (like "The server time zone value is unrecognized") are fixed by naming the timezone explicitly in the connection URL.</li>
+          </ul>
+        </div>
 
         <h2>Error 1: "Failed to configure a DataSource"</h2>
         <p>This is the most common one, and it means Spring Boot could not build a database connection at all. Two usual causes: the MySQL driver dependency is missing, or the connection properties are misspelled. Your <code>pom.xml</code> needs both JPA and the driver:</p>
