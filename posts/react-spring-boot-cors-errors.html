@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+  <title>React and Spring Boot CORS Errors: A Beginner's Fix Guide</title>
+  <meta name="description" content="Your Spring Boot API works in Postman but React gets blocked: CORS explained simply, with the config and dev proxy fixes beginners actually need.">
+  <meta name="theme-color" content="#FBFBF9">
+  <link rel="icon" href="../assets/img/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/main.css?v=20260929e">
+  <link rel="stylesheet" href="../assets/css/anime.css?v=20260929e">
+  <link rel="canonical" href="https://saurabshrestha.com.np/posts/react-spring-boot-cors-errors.html">
+  <meta property="og:title" content="React and Spring Boot CORS Errors: A Beginner's Fix Guide">
+  <meta property="og:description" content="Your Spring Boot API works in Postman but React gets blocked: CORS explained simply, with the config and dev proxy fixes beginners actually need.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://saurabshrestha.com.np/posts/react-spring-boot-cors-errors.html">
+  <meta property="og:image" content="https://saurabshrestha.com.np/assets/img/saurav-shrestha.jpg">
+  <meta property="og:site_name" content="Saurav Shrestha">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="React and Spring Boot CORS Errors: A Beginner's Fix Guide">
+  <meta name="twitter:description" content="Your Spring Boot API works in Postman but React gets blocked: CORS explained simply, with the config and dev proxy fixes beginners actually need.">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "React and Spring Boot CORS Errors: A Beginner's Fix Guide",
+  "datePublished": "2026-10-06",
+  "author": {"@type": "Person", "name": "Saurav Shrestha", "url": "https://saurabshrestha.com.np/"},
+  "url": "https://saurabshrestha.com.np/posts/react-spring-boot-cors-errors.html"
+}
+  </script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1184879199231987" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <!-- ======= Floating pill nav ======= -->
+  <nav class="pill-nav" aria-label="Primary">
+    <div class="nav-group">
+      <a class="nav-btn" href="../index.html" data-tip="Home" aria-label="Home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1-1V9.5"/><path d="M9.5 21v-6h5v6"/></svg>
+      </a>
+      <a class="nav-btn" href="../about.html" data-tip="About" aria-label="About">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="3.5" width="12.5" height="17" rx="2"/><path d="M9.5 3.5v17"/><path d="M13 8.5h2.5M13 12h2.5"/></svg>
+      </a>
+      <a class="nav-btn" href="../work.html" data-tip="Work" aria-label="Work">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7.5" width="18" height="12.5" rx="2.5"/><path d="M9.5 7.5V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v1.5"/><path d="M3 12.5h18"/></svg>
+      </a>
+      <a class="nav-btn" href="../projects.html" data-tip="Projects" aria-label="Projects">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="7" height="7" rx="2"/><rect x="13.5" y="3.5" width="7" height="7" rx="2"/><rect x="13.5" y="13.5" width="7" height="7" rx="2"/><rect x="3.5" y="13.5" width="7" height="7" rx="2"/></svg>
+      </a>
+      <a class="nav-btn active" href="../blog.html" data-tip="Blog" aria-label="Blog" aria-current="page">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5h9L20 8.5v12a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-16a1 1 0 0 1 1-1Z"/><path d="M14.5 3.5v5.5H20"/><path d="M9 13.5h6M9 17h6"/></svg>
+      </a>
+      <a class="nav-btn" href="../contact.html" data-tip="Contact" aria-label="Contact">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="m4 7.5 8 5.5 8-5.5"/></svg>
+      </a>
+    </div>
+    <span class="nav-divider" aria-hidden="true"></span>
+    <div class="nav-group">
+      <a class="nav-btn" href="https://github.com/saurav73" target="_blank" rel="noopener" data-tip="GitHub" aria-label="GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56 0-.27-.01-1.17-.02-2.12-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.72-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.42-2.7 5.39-5.26 5.68.41.35.77 1.05.77 2.12 0 1.53-.01 2.76-.01 3.14 0 .31.21.68.8.56A10.52 10.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>
+      </a>
+      <a class="nav-btn" href="#" data-tip="LinkedIn" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45Z"/></svg>
+      </a>
+      <a class="nav-btn" href="#" data-tip="Instagram" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.2" fill="currentColor" stroke="none"/></svg>
+      </a>
+    </div>
+    <span class="nav-divider" aria-hidden="true"></span>
+    <div class="nav-group">
+      <button class="nav-btn" id="theme-toggle" data-tip="Toggle theme" aria-label="Switch theme">
+        <span class="theme-icon" aria-hidden="true">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M2.5 12h2.4M19.1 12h2.4M5.3 5.3l1.7 1.7M17 17l1.7 1.7M18.7 5.3 17 7M7 17l-1.7 1.7"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5Z"/></svg>
+          <svg class="icon-anime" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="15.5" rx="9.5" ry="3.2"/><path d="M7.4 15.3C7.4 10.2 9.4 7.6 12 7.6c2.6 0 4.6 2.6 4.6 7.7"/><path d="M7.5 13.6c2.8 1.1 6.2 1.1 9 0" stroke="#FF2E4C"/></svg>
+          <svg class="icon-shrine" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7.5c3.5 1 6.5 1.4 10 1.4s6.5-.4 10-1.4"/><path d="M6 8.7v10.8M18 8.7v10.8"/><path d="M9.5 13h5"/></svg>
+        </span>
+      </button>
+
+    </div>
+  </nav>
+    <div class="mode-cluster">
+      <button class="mode-tab" id="anime-toggle" aria-pressed="false" aria-label="Toggle anime mode">
+        <svg class="mt-icon mt-hat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="15.5" rx="9.5" ry="3.2"/><path d="M7.4 15.3C7.4 10.2 9.4 7.6 12 7.6c2.6 0 4.6 2.6 4.6 7.7"/><path d="M7.5 13.6c2.8 1.1 6.2 1.1 9 0" stroke="#FF2E4C"/></svg>
+        <svg class="mt-icon mt-shrine" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7.5c3.5 1 6.5 1.4 10 1.4s6.5-.4 10-1.4"/><path d="M6 8.7v10.8M18 8.7v10.8"/><path d="M9.5 13h5"/></svg>
+        <span class="mt-to-anime">Anime mode</span>
+        <span class="mt-to-normal">Normal mode</span>
+      </button>
+      <div class="anime-sub" id="anime-sub" hidden>
+        <button class="sub-tab" data-sub="onepiece">One Piece</button>
+        <button class="sub-tab is-active" data-sub="jjk">Jujutsu Kaisen</button>
+      </div>
+    </div>
+
+  <main class="wrap">
+    <article class="article">
+      <header class="article-head">
+        <p class="label reveal">Full Stack</p>
+        <h1 class="reveal reveal-d1">React and Spring Boot CORS Errors: A Beginner's Fix Guide</h1>
+        <div class="post-meta reveal reveal-d2">
+          <span>October 6, 2026</span><span class="dot">·</span><span>5 min read</span><span class="dot">·</span><span>By Saurav Shrestha</span>
+        </div>
+      </header>
+
+      <div class="article-body reveal">
+        <p class="lead">My API worked perfectly in Postman. Every endpoint returned clean JSON. Then I pointed my React app at it, and the browser refused to touch it. If that sequence sounds familiar, you have met CORS, the most searched full-stack beginner error, and the fix takes ten minutes once you understand what the browser is doing.</p>
+
+        <h2>What CORS actually is</h2>
+        <p>CORS stands for Cross-Origin Resource Sharing, and it is a browser security rule, not a bug. An "origin" is the combination of protocol, host, and port. Your React app on <code>http://localhost:3000</code> and your Spring Boot API on <code>http://localhost:8080</code> are two different origins, so the browser blocks the response unless the server explicitly allows it. The server still receives the request and processes it; the browser just throws the response away. That is why the error feels so strange: the backend did its job, and the frontend never sees the result.</p>
+
+        <h2>The signature symptom: works in Postman, fails in React</h2>
+        <p>Postman is not a browser, so it never enforces CORS. If an endpoint works in Postman but fails from React with "has been blocked by CORS policy" or a failed preflight, the backend is fine and the wiring between the two is not. For certain requests, the browser first sends a preflight <code>OPTIONS</code> request asking for permission; only when the server answers correctly does the real request go out. Any fix that ignores the preflight is incomplete.</p>
+
+        <div class="post-row-ad" aria-hidden="true">
+          <ins class="adsbygoogle"
+               style="display:block; text-align:center;"
+               data-ad-layout="in-article"
+               data-ad-format="fluid"
+               data-ad-client="ca-pub-1184879199231987"
+               data-ad-slot="4185733491"></ins>
+          <script>
+               (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+
+        <h2>The proper fix: configure CORS on the server</h2>
+        <p>The clean fix is to tell Spring Boot which origins are allowed. A global configuration class keeps it in one place instead of sprinkling <code>@CrossOrigin</code> on every controller:</p>
+        <pre><code>@Configuration
+public class CorsConfig implements WebMvcConfigurer {
+
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/api/**")
+                .allowedOrigins("http://localhost:3000")
+                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+                .allowedHeaders("Authorization", "Content-Type")
+                .allowCredentials(true)
+                .maxAge(3600);
+    }
+}</code></pre>
+        <p>Use your real frontend URL in production instead of localhost. If you use <code>@CrossOrigin</code> on a single controller for a quick test, that is fine, but the global config is the version that survives a real project.</p>
+
+        <h2>The trap: Spring Security eats your preflight</h2>
+        <p>This is where most beginners get stuck. The CORS config above does nothing if Spring Security is in the picture, because the security filter chain rejects the <code>OPTIONS</code> preflight before it ever reaches the CORS handler. The result is a 401 or 403 on the preflight, and the browser reports a CORS error even though CORS was configured. Wire CORS into the security chain explicitly:</p>
+        <pre><code>@Bean
+public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    http
+        .cors(Customizer.withDefaults())
+        .csrf(csrf -&gt; csrf.disable())
+        .authorizeHttpRequests(auth -&gt; auth
+            .requestMatchers("/api/auth/**").permitAll()
+            .anyRequest().authenticated());
+    return http.build();
+}
+
+@Bean
+public CorsConfigurationSource corsConfigurationSource() {
+    CorsConfiguration config = new CorsConfiguration();
+    config.setAllowedOrigins(List.of("http://localhost:3000"));
+    config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+    config.setAllowedHeaders(List.of("Authorization", "Content-Type"));
+    config.setAllowCredentials(true);
+    UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+    source.registerCorsConfiguration("/**", config);
+    return source;
+}</code></pre>
+        <p>The two halves belong together: <code>http.cors()</code> tells security to consult CORS rules, and the <code>CorsConfigurationSource</code> bean supplies those rules. Miss the first and the preflight dies at the security gate.</p>
+
+        <h2>The dev shortcut: a React proxy</h2>
+        <p>When you are only developing locally, you can dodge CORS entirely. Add this to your <code>package.json</code> in a Create React App project:</p>
+        <pre><code>"proxy": "http://localhost:8080"</code></pre>
+        <p>Then call the API with relative paths, like <code>fetch("/api/rooms")</code>. The dev server forwards those requests to Spring Boot, so the browser sees a same-origin call and CORS never applies. Treat it as a development shortcut only; in production, configure CORS properly on the backend, because the proxy does not exist there.</p>
+
+        <h2>Two rules that save you later</h2>
+        <p>First, never combine <code>allowedOrigins("*")</code> with <code>allowCredentials(true)</code>. Browsers reject that combination outright, and Spring Boot will fail rather than guess what you meant. List your exact origins when credentials are involved. Second, if your React app sends an <code>Authorization</code> header or cookies, the preflight only passes when those headers are in your allowed list. Forgetting <code>Authorization</code> in <code>allowedHeaders</code> is a classic: every login request dies while every unauthenticated GET works, which looks like an auth bug but is really a CORS bug.</p>
+
+        <h2>A quick debugging checklist</h2>
+        <p>When CORS strikes again, walk through this list: open the browser's Network tab and find the <code>OPTIONS</code> request, its status tells you whether the preflight failed (401 or 403 usually means Spring Security is blocking it) or succeeded. Check the exact origin of your frontend, including the port, against your allowed origins. Restart the backend after changing CORS config, Spring does not pick it up from a stale run. And confirm the request works in Postman first; if Postman fails too, the problem is not CORS at all.</p>
+      </div>
+
+      <nav class="post-nav" aria-label="More posts">
+        <a class="text-link" href="spring-boot-jwt-authentication-react.html">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+          Newer: JWT Authentication in Spring Boot and React
+        </a>
+        <a class="text-link" href="spring-boot-mysql-connection-errors.html">Older: Spring Boot MySQL Connection Errors
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </nav>
+    </article>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-inner">
+        <span>© <span id="year">2026</span> Saurav Shrestha · Lalitpur, Nepal</span>
+        <span>Designed &amp; built by hand.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js?v=20260929e"></script>
+</body>
+</html>

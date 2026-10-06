@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+  <title>JWT Authentication in Spring Boot and React: Beginner Guide</title>
+  <meta name="description" content="Learn JWT login in Spring Boot and React: the Spring Security config, the token filter, the login endpoint, and how the frontend sends the token.">
+  <meta name="theme-color" content="#FBFBF9">
+  <link rel="icon" href="../assets/img/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/main.css?v=20260929e">
+  <link rel="stylesheet" href="../assets/css/anime.css?v=20260929e">
+  <link rel="canonical" href="https://saurabshrestha.com.np/posts/spring-boot-jwt-authentication-react.html">
+  <meta property="og:title" content="JWT Authentication in Spring Boot and React: Beginner Guide">
+  <meta property="og:description" content="Learn JWT login in Spring Boot and React: the Spring Security config, the token filter, the login endpoint, and how the frontend sends the token.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://saurabshrestha.com.np/posts/spring-boot-jwt-authentication-react.html">
+  <meta property="og:image" content="https://saurabshrestha.com.np/assets/img/saurav-shrestha.jpg">
+  <meta property="og:site_name" content="Saurav Shrestha">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="JWT Authentication in Spring Boot and React: Beginner Guide">
+  <meta name="twitter:description" content="Learn JWT login in Spring Boot and React: the Spring Security config, the token filter, the login endpoint, and how the frontend sends the token.">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "JWT Authentication in Spring Boot and React: A Beginner Guide",
+  "datePublished": "2026-10-06",
+  "author": {"@type": "Person", "name": "Saurav Shrestha", "url": "https://saurabshrestha.com.np/"},
+  "url": "https://saurabshrestha.com.np/posts/spring-boot-jwt-authentication-react.html"
+}
+  </script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1184879199231987" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <!-- ======= Floating pill nav ======= -->
+  <nav class="pill-nav" aria-label="Primary">
+    <div class="nav-group">
+      <a class="nav-btn" href="../index.html" data-tip="Home" aria-label="Home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1-1V9.5"/><path d="M9.5 21v-6h5v6"/></svg>
+      </a>
+      <a class="nav-btn" href="../about.html" data-tip="About" aria-label="About">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="3.5" width="12.5" height="17" rx="2"/><path d="M9.5 3.5v17"/><path d="M13 8.5h2.5M13 12h2.5"/></svg>
+      </a>
+      <a class="nav-btn" href="../work.html" data-tip="Work" aria-label="Work">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7.5" width="18" height="12.5" rx="2.5"/><path d="M9.5 7.5V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v1.5"/><path d="M3 12.5h18"/></svg>
+      </a>
+      <a class="nav-btn" href="../projects.html" data-tip="Projects" aria-label="Projects">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="7" height="7" rx="2"/><rect x="13.5" y="3.5" width="7" height="7" rx="2"/><rect x="13.5" y="13.5" width="7" height="7" rx="2"/><rect x="3.5" y="13.5" width="7" height="7" rx="2"/></svg>
+      </a>
+      <a class="nav-btn active" href="../blog.html" data-tip="Blog" aria-label="Blog" aria-current="page">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5h9L20 8.5v12a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-16a1 1 0 0 1 1-1Z"/><path d="M14.5 3.5v5.5H20"/><path d="M9 13.5h6M9 17h6"/></svg>
+      </a>
+      <a class="nav-btn" href="../contact.html" data-tip="Contact" aria-label="Contact">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="m4 7.5 8 5.5 8-5.5"/></svg>
+      </a>
+    </div>
+    <span class="nav-divider" aria-hidden="true"></span>
+    <div class="nav-group">
+      <a class="nav-btn" href="https://github.com/saurav73" target="_blank" rel="noopener" data-tip="GitHub" aria-label="GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56 0-.27-.01-1.17-.02-2.12-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.72-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.42-2.7 5.39-5.26 5.68.41.35.77 1.05.77 2.12 0 1.53-.01 2.76-.01 3.14 0 .31.21.68.8.56A10.52 10.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>
+      </a>
+      <a class="nav-btn" href="#" data-tip="LinkedIn" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45Z"/></svg>
+      </a>
+      <a class="nav-btn" href="#" data-tip="Instagram" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.2" fill="currentColor" stroke="none"/></svg>
+      </a>
+    </div>
+    <span class="nav-divider" aria-hidden="true"></span>
+    <div class="nav-group">
+      <button class="nav-btn" id="theme-toggle" data-tip="Toggle theme" aria-label="Switch theme">
+        <span class="theme-icon" aria-hidden="true">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M2.5 12h2.4M19.1 12h2.4M5.3 5.3l1.7 1.7M17 17l1.7 1.7M18.7 5.3 17 7M7 17l-1.7 1.7"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5Z"/></svg>
+          <svg class="icon-anime" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="15.5" rx="9.5" ry="3.2"/><path d="M7.4 15.3C7.4 10.2 9.4 7.6 12 7.6c2.6 0 4.6 2.6 4.6 7.7"/><path d="M7.5 13.6c2.8 1.1 6.2 1.1 9 0" stroke="#FF2E4C"/></svg>
+          <svg class="icon-shrine" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7.5c3.5 1 6.5 1.4 10 1.4s6.5-.4 10-1.4"/><path d="M6 8.7v10.8M18 8.7v10.8"/><path d="M9.5 13h5"/></svg>
+        </span>
+      </button>
+
+    </div>
+  </nav>
+    <div class="mode-cluster">
+      <button class="mode-tab" id="anime-toggle" aria-pressed="false" aria-label="Toggle anime mode">
+        <svg class="mt-icon mt-hat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="15.5" rx="9.5" ry="3.2"/><path d="M7.4 15.3C7.4 10.2 9.4 7.6 12 7.6c2.6 0 4.6 2.6 4.6 7.7"/><path d="M7.5 13.6c2.8 1.1 6.2 1.1 9 0" stroke="#FF2E4C"/></svg>
+        <svg class="mt-icon mt-shrine" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7.5c3.5 1 6.5 1.4 10 1.4s6.5-.4 10-1.4"/><path d="M6 8.7v10.8M18 8.7v10.8"/><path d="M9.5 13h5"/></svg>
+        <span class="mt-to-anime">Anime mode</span>
+        <span class="mt-to-normal">Normal mode</span>
+      </button>
+      <div class="anime-sub" id="anime-sub" hidden>
+        <button class="sub-tab" data-sub="onepiece">One Piece</button>
+        <button class="sub-tab is-active" data-sub="jjk">Jujutsu Kaisen</button>
+      </div>
+    </div>
+
+  <main class="wrap">
+    <article class="article">
+      <header class="article-head">
+        <p class="label reveal">Spring Boot</p>
+        <h1 class="reveal reveal-d1">JWT Authentication in Spring Boot and React: A Beginner Guide</h1>
+        <div class="post-meta reveal reveal-d2">
+          <span>October 6, 2026</span><span class="dot">·</span><span>5 min read</span><span class="dot">·</span><span>By Saurav Shrestha</span>
+        </div>
+      </header>
+
+      <div class="article-body reveal">
+        <p class="lead">The first time I added login to a Spring Boot and React app, I tried to force session cookies through CORS and spent two days debugging. The cleaner answer is JWT: the server hands the client a signed token at login, and the client attaches it to every request. Here is the whole flow, end to end, in the smallest version that actually works.</p>
+
+        <h2>What a JWT is</h2>
+        <p>A JSON Web Token is three Base64 parts joined by dots: a header, a payload, and a signature. The payload carries claims like the username and an expiry time. The signature is created with a secret that only your server knows, so the server can verify the token is genuine without storing it anywhere. A token is signed, not encrypted: anyone can read the payload, so never put secrets in it. What makes it safe is that nobody can forge the signature without your secret.</p>
+
+        <h2>The login flow</h2>
+        <p>The flow has four steps and it never changes: the React app posts the username and password to a public login endpoint. The backend checks the password, and if it matches, generates a token and sends it back. React stores the token in memory. From then on, every API call carries the token in the <code>Authorization: Bearer &lt;token&gt;</code> header, and a filter on the backend validates it before the request reaches your controller. No sessions, nothing stored server-side, which is exactly why JWT fits APIs that serve a React frontend.</p>
+
+        <div class="post-row-ad" aria-hidden="true">
+          <ins class="adsbygoogle"
+               style="display:block; text-align:center;"
+               data-ad-layout="in-article"
+               data-ad-format="fluid"
+               data-ad-client="ca-pub-1184879199231987"
+               data-ad-slot="4185733491"></ins>
+          <script>
+               (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+
+        <h2>Configure Spring Security</h2>
+        <p>Spring Security blocks everything by default, so the first job is to open the login endpoint, close everything else, and make the API stateless. A <code>SecurityFilterChain</code> bean does all three:</p>
+        <pre><code>@Bean
+public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    http
+        .csrf(csrf -&gt; csrf.disable())
+        .authorizeHttpRequests(auth -&gt; auth
+            .requestMatchers("/api/auth/**").permitAll()
+            .anyRequest().authenticated())
+        .sessionManagement(session -&gt;
+            session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+        .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
+    return http.build();
+}</code></pre>
+        <p>Disabling CSRF is correct here because the API has no sessions for CSRF to attack; the token itself is the protection. Stateless sessions keep Spring from creating a session per user, which is what makes the API genuinely token-based.</p>
+
+        <h2>The login endpoint</h2>
+        <p>The login endpoint authenticates the credentials with the <code>AuthenticationManager</code>, then issues a token through your token service. Passwords must be stored hashed, never plain text, so register a <code>BCryptPasswordEncoder</code> bean and use it when creating users:</p>
+        <pre><code>@PostMapping("/login")
+public ResponseEntity&lt;AuthResponse&gt; login(
+        @RequestBody LoginRequest req) {
+    Authentication auth = authenticationManager.authenticate(
+        new UsernamePasswordAuthenticationToken(
+            req.getUsername(), req.getPassword()));
+    String token = jwtService.generateToken(auth.getName());
+    return ResponseEntity.ok(new AuthResponse(token));
+}</code></pre>
+        <p>If the credentials are wrong, the authentication manager throws and the client gets a 401. Only correct credentials ever receive a token.</p>
+
+        <h2>The filter that checks the token</h2>
+        <p>A filter that extends <code>OncePerRequestFilter</code> runs before every protected request, pulls the token out of the header, and validates it:</p>
+        <pre><code>@Override
+protected void doFilterInternal(HttpServletRequest request,
+        HttpServletResponse response, FilterChain chain)
+        throws ServletException, IOException {
+    String header = request.getHeader("Authorization");
+    if (header != null &amp;&amp; header.startsWith("Bearer ")) {
+        String token = header.substring(7);
+        if (jwtService.isValid(token)) {
+            String username = jwtService.extractUsername(token);
+            UsernamePasswordAuthenticationToken auth =
+                new UsernamePasswordAuthenticationToken(
+                    username, null, List.of());
+            SecurityContextHolder.getContext().setAuthentication(auth);
+        }
+    }
+    chain.doFilter(request, response);
+}</code></pre>
+        <p>When the token is valid, the filter places an authentication object into the security context and the request proceeds. When it is missing or invalid, the request reaches your endpoint unauthenticated and Spring Security answers with 403.</p>
+
+        <h2>The React side</h2>
+        <p>On the frontend, login is a plain POST. Store the token in React state, not anywhere else, and attach it to every subsequent request:</p>
+        <pre><code>// login
+const response = await fetch("http://localhost:8080/api/auth/login", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ username, password }),
+});
+const { token } = await response.json();
+setToken(token);
+
+// every later request
+const rooms = await fetch("http://localhost:8080/api/rooms", {
+  headers: { Authorization: "Bearer " + token },
+});</code></pre>
+        <p>If you already use axios, an interceptor that adds the header automatically is cleaner than repeating it on every call.</p>
+
+        <h2>Where to store the token</h2>
+        <p>Beginners usually reach for <code>localStorage</code>, and most tutorials do too, but it is the weak choice: any script running on your page can read it, so a single cross-site scripting hole leaks every token. In-memory storage, a React state value or a context, disappears on page refresh, which sounds like a downside but is actually the security property you want. The trade-off is real, users log in again after refresh, which is why production apps add short-lived access tokens plus refresh tokens. For a first project, memory storage plus a sensible expiry is the honest baseline.</p>
+
+        <h2>Token expiry is a feature, not a bug</h2>
+        <p>Set tokens to expire. A token that lives forever is a stolen credential that works forever. Generate tokens with a short lifetime, fifteen minutes is a common starting point, and have the frontend send the user back to login when the backend starts answering 401. When that flow feels natural, you are ready for the next step: refresh tokens, which rotate credentials silently without another login screen.</p>
+      </div>
+
+      <nav class="post-nav" aria-label="More posts">
+        <a class="text-link" href="react-spring-boot-cors-errors.html">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+          Newer: React and Spring Boot CORS Errors
+        </a>
+        <a class="text-link" href="spring-boot-mysql-connection-errors.html">Older: Spring Boot MySQL Connection Errors
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </nav>
+    </article>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-inner">
+        <span>© <span id="year">2026</span> Saurav Shrestha · Lalitpur, Nepal</span>
+        <span>Designed &amp; built by hand.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js?v=20260929e"></script>
+</body>
+</html>
