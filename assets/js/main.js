@@ -1,4 +1,4 @@
-/* Saurav Shrestha — shared site interactions */
+/* Saurav Shrestha: shared site interactions */
 (function () {
   "use strict";
 
@@ -60,7 +60,7 @@
     if (kicker && KICKERS[animeSub]) { kicker.textContent = KICKERS[animeSub]; }
   }
 
-  /* Sukuna's domain chant — PARKED: voice removed for now.
+  /* Sukuna's domain chant - PARKED: voice removed for now.
      The user will supply their own audio; drop it in as
      assets/audio/ryoiki-tenkai.mp3 and call playDomainChant()
      from the JJK sub-tab click and the anime-mode entry. */
