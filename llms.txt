@@ -26,6 +26,10 @@ robotics and UI/UX mentoring delivered to students across colleges in Nepal.
   - React and Spring Boot CORS errors: https://saurabshrestha.com.np/posts/react-spring-boot-cors-errors.html
   - JWT authentication in Spring Boot and React: https://saurabshrestha.com.np/posts/spring-boot-jwt-authentication-react.html
   - Spring Boot and MySQL connection errors: https://saurabshrestha.com.np/posts/spring-boot-mysql-connection-errors.html
+  - Spring Boot REST API best practices: https://saurabshrestha.com.np/posts/spring-boot-rest-api-best-practices.html
+  - Build a book marketplace with Java and MySQL: https://saurabshrestha.com.np/posts/java-mysql-book-marketplace.html
+  - React.js for beginners (build a poetry platform): https://saurabshrestha.com.np/posts/react-beginners-poetry-platform.html
+  - ESP32 home automation in Nepal (beginner's guide): https://saurabshrestha.com.np/posts/esp32-home-automation-nepal.html
 - Privacy: https://saurabshrestha.com.np/privacy.html
 - Terms: https://saurabshrestha.com.np/terms.html
 - Contact: https://saurabshrestha.com.np/contact.html
