@@ -1,4 +1,17 @@
-/* Saurav Shrestha: shared site interactions */
+/*
+ * Saurav Shrestha: shared site interactions
+ *
+ * Theme contract:
+ * - themes: "light" | "dark" | "anime"; persisted in localStorage key "ss-theme"
+ * - anime sub-modes: "onepiece" | "jjk" (default "jjk"); persisted in
+ *   localStorage key "ss-anime-sub-v2"; a saved "bleach" value migrates to "jjk"
+ * - <html data-theme="..."> drives all theming CSS; the
+ *   meta[name="theme-color"] tag is updated to match the active theme
+ *
+ * This file is referenced from every page with a ?v=YYYYMMDDx cache-busting
+ * query string (see README "Deploying"); bump it in every HTML file on each
+ * deploy that touches this file.
+ */
 (function () {
   "use strict";
 
