@@ -33,3 +33,6 @@ robotics and UI/UX mentoring delivered to students across colleges in Nepal.
 - Privacy: https://saurabshrestha.com.np/privacy.html
 - Terms: https://saurabshrestha.com.np/terms.html
 - Contact: https://saurabshrestha.com.np/contact.html
+- Downloads:
+  - 5 Money Traps checklist (PDF): https://saurabshrestha.com.np/5-money-traps-checklist.pdf
+  - Thumbnail checklist (PDF): https://saurabshrestha.com.np/thumbnail-checklist.pdf
