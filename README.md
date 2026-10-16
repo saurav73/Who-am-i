@@ -29,6 +29,7 @@ Static HTML / CSS / vanilla JS. No build step, no framework. Hosted on **GitHub 
 | `sitemap.xml`, `robots.txt`, `llms.txt` | SEO / AI crawler files |
 | `thumbnail-checklist.pdf`, `5-money-traps-checklist.pdf` | Free downloadable checklists offered to readers |
 | `google7c9e2fcdb4f1a882.html` | Google Search Console ownership verification |
+| `CHANGELOG.md` | Dated record of shipped work |
 
 ## Deploying
 
