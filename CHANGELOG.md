@@ -8,6 +8,10 @@ Dated record of shipped work on this portfolio site. Newest first.
   (`5-money-traps-checklist.pdf`, `thumbnail-checklist.pdf`) to the site map
 - assets/js/main.js: header docblock now documents the localStorage keys
   (`ss-theme`, `ss-anime-sub-v2`) and the theme behavior contract
+- projects.html, work.html: removed the calculator project cards
+  (TakeHomeCalc, ArthaCalc, AbroadCalc) per the showcase policy —
+  calculator projects are never presented on this portfolio
+- README.md: structure table now lists this changelog
 - Started this changelog
 
 ## 2026-10-14
