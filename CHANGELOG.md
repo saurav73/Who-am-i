@@ -2,6 +2,15 @@
 
 Dated record of shipped work on this portfolio site. Newest first.
 
+## 2026-10-18
+
+- SEO hygiene: trimmed meta descriptions to at or under 145 chars on about,
+  contact, projects, and four blog posts (about, contact, esp32-home-automation,
+  java-mysql-book-marketplace, react-beginners-poetry-platform,
+  spring-boot-mysql-connection-errors)
+- sitemap.xml: set work.html and projects.html lastmod to 2026-10-16,
+  matching the day the calculator cards were removed from those pages
+
 ## 2026-10-16
 
 - llms.txt: added the two free downloadable checklists
