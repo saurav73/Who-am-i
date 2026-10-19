@@ -2,6 +2,14 @@
 
 Dated record of shipped work on this portfolio site. Newest first.
 
+## 2026-10-19
+
+- SEO hygiene: trimmed meta descriptions to at or under 145 chars on the three
+  remaining blog posts that exceeded it (spring-boot-rest-api-best-practices,
+  react-spring-boot-cors-errors, spring-boot-jwt-authentication-react)
+- sitemap.xml: bumped lastmod to 2026-10-19 for the three posts whose meta
+  descriptions were trimmed
+
 ## 2026-10-18
 
 - SEO hygiene: trimmed meta descriptions to at or under 145 chars on about,
