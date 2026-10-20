@@ -2,6 +2,14 @@
 
 Dated record of shipped work on this portfolio site. Newest first.
 
+## 2026-10-20
+
+- SEO hygiene: trimmed the about.html `<title>` (and matching og:title) from 63
+  to 52 chars per the 50-60 char rule; bumped the about.html sitemap lastmod to
+  2026-10-20
+- Verified showcase ban still clean: no TakeHomeCalc/ArthaCalc/AbroadCalc
+  references anywhere on projects.html, work.html, index.html, or about.html
+
 ## 2026-10-19
 
 - SEO hygiene: trimmed meta descriptions to at or under 145 chars on the three
