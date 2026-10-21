@@ -2,6 +2,15 @@
 
 Dated record of shipped work on this portfolio site. Newest first.
 
+## 2026-10-21
+
+- UX: added a branded 404.html so mistyped or dead links land on a styled
+  page (reuses the site theme, root-absolute asset paths, noindex) instead of
+  GitHub Pages' default error page; links visitors back to home, work, blog
+  and contact
+- Verified showcase ban still clean: no TakeHomeCalc/ArthaCalc/AbroadCalc
+  references anywhere on projects.html, work.html, index.html, or about.html
+
 ## 2026-10-20
 
 - SEO hygiene: trimmed the about.html `<title>` (and matching og:title) from 63
