@@ -2,6 +2,10 @@
 
 Dated record of shipped work on this portfolio site. Newest first.
 
+## 2026-10-22
+- Lengthened the privacy.html and terms.html `<title>` tags to 48/50 chars ("...for Saurav Shrestha's Portfolio") to meet the 50-60 char SEO title rule
+- Re-verified the showcase ban: no calculator projects (TakeHomeCalc, ArthaCalc, AbroadCalc) in projects.html, work.html, or anywhere else
+
 ## 2026-10-21
 
 - UX: added a branded 404.html so mistyped or dead links land on a styled
