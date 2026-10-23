@@ -2,6 +2,11 @@
 
 Dated record of shipped work on this portfolio site. Newest first.
 
+## 2026-10-23
+- Fixed dead LinkedIn and Instagram buttons: every page's navbar social group and the contact page's social row linked them to `href="#"` — they now point to the real profiles (same URLs as the GitHub profile's Connect section) and open in a new tab
+- README: added the branded `404.html` (shipped 2026-10-21) to the project-structure table
+- Re-verified the showcase ban: no calculator projects (TakeHomeCalc, ArthaCalc, AbroadCalc) in projects.html, work.html, or anywhere else; sitemap URLs all resolve to real files
+
 ## 2026-10-22
 - Lengthened the privacy.html and terms.html `<title>` tags to 48/50 chars ("...for Saurav Shrestha's Portfolio") to meet the 50-60 char SEO title rule
 - Re-verified the showcase ban: no calculator projects (TakeHomeCalc, ArthaCalc, AbroadCalc) in projects.html, work.html, or anywhere else
