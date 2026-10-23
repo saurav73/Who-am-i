@@ -21,6 +21,7 @@ Static HTML / CSS / vanilla JS. No build step, no framework. Hosted on **GitHub 
 | Path | What it is |
 |---|---|
 | `index.html` | Home |
+| `404.html` | Branded 404 page for mistyped or dead links |
 | `about.html`, `contact.html` | About / contact |
 | `blog.html`, `posts/` | Blog list + articles |
 | `projects.html`, `work.html` | Projects / work |
