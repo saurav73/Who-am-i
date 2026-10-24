@@ -2,6 +2,10 @@
 
 Dated record of shipped work on this portfolio site. Newest first.
 
+## 2026-10-24
+- Featured ToolNest (toolnest-sage.vercel.app) as the first card on the Projects page — the portfolio now reflects Saurav's current flagship product; tagged "Live on Vercel" and "Open source" (github.com/saurav73/ToolNest)
+- Re-verified the showcase ban: still no calculator projects (TakeHomeCalc, ArthaCalc, AbroadCalc) anywhere on the site; blog list matches posts/; footer year remains JS-driven; sitemap unchanged (404.html and GSC verification file correctly excluded)
+
 ## 2026-10-23
 - Fixed dead LinkedIn and Instagram buttons: every page's navbar social group and the contact page's social row linked them to `href="#"` — they now point to the real profiles (same URLs as the GitHub profile's Connect section) and open in a new tab
 - README: added the branded `404.html` (shipped 2026-10-21) to the project-structure table
