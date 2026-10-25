@@ -2,6 +2,10 @@
 
 Dated record of shipped work on this portfolio site. Newest first.
 
+## 2026-10-25
+- Fixed stale sitemap lastmod dates: all 14 pages except projects.html were edited on 2026-10-23 by the dead-link fix but still showed older dates; they now read 2026-10-23 (projects.html stays 2026-10-24)
+- Re-verified internal links across all pages and posts: no broken local hrefs or asset references; the earlier link-check misses were query-string and root-absolute false positives
+
 ## 2026-10-24
 - Featured ToolNest (toolnest-sage.vercel.app) as the first card on the Projects page — the portfolio now reflects Saurav's current flagship product; tagged "Live on Vercel" and "Open source" (github.com/saurav73/ToolNest)
 - Re-verified the showcase ban: still no calculator projects (TakeHomeCalc, ArthaCalc, AbroadCalc) anywhere on the site; blog list matches posts/; footer year remains JS-driven; sitemap unchanged (404.html and GSC verification file correctly excluded)
