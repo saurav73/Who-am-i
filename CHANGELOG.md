@@ -2,6 +2,10 @@
 
 Dated record of shipped work on this portfolio site. Newest first.
 
+## 2026-10-26
+- README: added the missing structure-table rows for `privacy.html`, `terms.html` (both in the sitemap) and `ads.txt` — previously only the SEO trio was listed
+- Re-verified the showcase ban: no calculator projects (TakeHomeCalc, ArthaCalc, AbroadCalc) in any page or post; ToolNest remains the featured project card
+
 ## 2026-10-25
 - Fixed stale sitemap lastmod dates: all 14 pages except projects.html were edited on 2026-10-23 by the dead-link fix but still showed older dates; they now read 2026-10-23 (projects.html stays 2026-10-24)
 - Re-verified internal links across all pages and posts: no broken local hrefs or asset references; the earlier link-check misses were query-string and root-absolute false positives
