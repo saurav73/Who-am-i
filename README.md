@@ -8,7 +8,7 @@ Full Stack Developer from Lalitpur, Nepal — Java / Spring Boot backends, React
 
 - **Three themes** — professional light, dark, and a full anime mode (manga-style animated design) with One Piece and Jujutsu Kaisen sub-modes
 - **Blog** — classic article list (`posts/`) covering Java, Spring Boot, React, and maker projects
-- **Projects & work pages** — selected builds with write-ups
+- **Projects & work pages** — selected builds with write-ups, ToolNest featured first (current flagship product)
 - **SEO + AI-ready** — sitemap, robots.txt, `llms.txt`, per-page meta
 - **AdSense** — subtle native ads (`ads.txt` at root)
 
