@@ -2,6 +2,10 @@
 
 Dated record of shipped work on this portfolio site. Newest first.
 
+## 2026-10-27
+- README: Features now names ToolNest as the featured project, matching the 2026-10-24 site change that put its card first on the Projects page
+- Re-verified the showcase ban: no calculator projects in any page or post; blog list still matches all 7 files in posts/; llms.txt lists all 7 posts
+
 ## 2026-10-26
 - README: added the missing structure-table rows for `privacy.html`, `terms.html` (both in the sitemap) and `ads.txt` — previously only the SEO trio was listed
 - Re-verified the showcase ban: no calculator projects (TakeHomeCalc, ArthaCalc, AbroadCalc) in any page or post; ToolNest remains the featured project card
