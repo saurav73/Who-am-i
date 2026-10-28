@@ -2,6 +2,11 @@
 
 Dated record of shipped work on this portfolio site. Newest first.
 
+
+## 2026-10-28
+- README: cache-busting note clarified - the version letter goes in every content HTML file; the Search Console verification file carries no assets and has none
+- Re-verified the showcase ban: no calculator projects in any page or post; blog list still matches all 7 files in posts/
+
 ## 2026-10-27
 - README: Features now names ToolNest as the featured project, matching the 2026-10-24 site change that put its card first on the Projects page
 - Re-verified the showcase ban: no calculator projects in any page or post; blog list still matches all 7 files in posts/; llms.txt lists all 7 posts
