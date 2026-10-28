@@ -38,7 +38,7 @@ Static HTML / CSS / vanilla JS. No build step, no framework. Hosted on **GitHub 
 
 Push to `main` — GitHub Pages deploys automatically.
 
-> **Cache-busting:** CSS/JS links carry a `?v=YYYYMMDDx` query string. Bump the version letter in every HTML file on each deploy that touches CSS/JS, or visitors on cached copies get silently broken behavior.
+> **Cache-busting:** CSS/JS links carry a `?v=YYYYMMDDx` query string. Bump the version letter in every content HTML file on each deploy that touches CSS/JS (the Search Console verification file carries no assets, so it has none), or visitors on cached copies get silently broken behavior.
 
 ## License
 
