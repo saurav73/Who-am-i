@@ -3,6 +3,10 @@
 Dated record of shipped work on this portfolio site. Newest first.
 
 
+## 2026-10-30
+- README: SEO bullet now states the sitemap size (15 URLs: 8 pages + 7 posts), counted from sitemap.xml
+- Re-verified the showcase ban: no calculator projects in any page or post; all 47 cache-busting references still share one version (v=20261006a); blog list still matches all 7 files in posts/
+
 ## 2026-10-29
 - README: structure table now names the custom domain from CNAME (saurabshrestha.com.np) instead of the generic "Custom domain"
 - Re-verified the showcase ban: no calculator projects in any page or post; all 47 cache-busting references still share one version (v=20261006a); blog list still matches all 7 files in posts/
