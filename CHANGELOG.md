@@ -3,6 +3,10 @@
 Dated record of shipped work on this portfolio site. Newest first.
 
 
+## 2026-10-31
+- README: structure table now states the assets/ breakdown (26 files: 2 CSS, 1 JS, 22 images, plus Image.jpeg), counted from assets/
+- Re-verified the showcase ban: no calculator projects in any page or post
+
 ## 2026-10-30
 - README: SEO bullet now states the sitemap size (15 URLs: 8 pages + 7 posts), counted from sitemap.xml
 - Re-verified the showcase ban: no calculator projects in any page or post; all 47 cache-busting references still share one version (v=20261006a); blog list still matches all 7 files in posts/
