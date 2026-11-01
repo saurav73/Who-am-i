@@ -3,6 +3,10 @@
 Dated record of shipped work on this portfolio site. Newest first.
 
 
+## 2026-11-01
+- README: features now state the blog breakdown (7 posts: 3 spring-boot-*, 2 react-*, 1 java-mysql-*, 1 esp32-*), counted from posts/
+- Re-verified: sitemap.xml still lists 15 URLs (8 pages + 7 posts), and the showcase ban holds (no calculator projects in any page or post)
+
 ## 2026-10-31
 - README: structure table now states the assets/ breakdown (26 files: 2 CSS, 1 JS, 22 images, plus Image.jpeg), counted from assets/
 - Re-verified the showcase ban: no calculator projects in any page or post
