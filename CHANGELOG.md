@@ -3,6 +3,10 @@
 Dated record of shipped work on this portfolio site. Newest first.
 
 
+## 2026-11-02
+- README: structure section now states the 10 root HTML pages (8 content pages + 404 + Search Console verification file), counted from the repo root
+- Re-verified: blog list still matches all 7 files in posts/, and the showcase ban holds (no calculator projects in any page or post)
+
 ## 2026-11-01
 - README: features now state the blog breakdown (7 posts: 3 spring-boot-*, 2 react-*, 1 java-mysql-*, 1 esp32-*), counted from posts/
 - Re-verified: sitemap.xml still lists 15 URLs (8 pages + 7 posts), and the showcase ban holds (no calculator projects in any page or post)
