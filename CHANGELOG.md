@@ -3,6 +3,11 @@
 Dated record of shipped work on this portfolio site. Newest first.
 
 
+
+## 2026-11-04
+- README: structure section now states the repo total of 17 HTML files (10 root + 7 posts), counted from the repo root and `posts/`
+- Re-verified: sitemap.xml still lists 15 URLs, and the showcase ban holds (no calculator projects in any page or post)
+
 ## 2026-11-03
 - README: Deploying section now states the current cache-busting version (20261006a), used by all 9 root content pages and all 7 posts, counted from the repo root and posts/
 - Re-verified: sitemap.xml still lists 15 URLs, and the showcase ban holds (no calculator projects in any page or post)
