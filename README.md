@@ -34,7 +34,7 @@ Static HTML / CSS / vanilla JS. No build step, no framework. Hosted on **GitHub 
 | `google7c9e2fcdb4f1a882.html` | Google Search Console ownership verification |
 | `CHANGELOG.md` | Dated record of shipped work |
 
-10 HTML pages at the root: 8 content pages (`index`, `about`, `blog`, `contact`, `projects`, `work`, `privacy`, `terms`) plus `404.html` and the Search Console verification file, counted from the repo root. In total the repo holds 17 HTML files (10 root + 7 in `posts/`).
+10 HTML pages at the root: 8 content pages (`index`, `about`, `blog`, `contact`, `projects`, `work`, `privacy`, `terms`) plus `404.html` and the Search Console verification file, counted from the repo root. In total the repo holds 17 HTML files (10 root + 7 in `posts/`). The repo root holds 19 files in total: the 10 HTML files plus `README.md`, `CHANGELOG.md`, `CNAME`, `ads.txt`, `robots.txt`, `sitemap.xml`, `llms.txt`, and the 2 checklist PDFs, counted from the repo root.
 
 ## Deploying
 
