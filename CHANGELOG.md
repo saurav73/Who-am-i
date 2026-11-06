@@ -4,6 +4,10 @@ Dated record of shipped work on this portfolio site. Newest first.
 
 
 
+## 2026-11-06
+- README: structure section now states the repo total of 52 tracked files (largest group `assets/img/` with 22 images), counted with `git ls-files`
+- Re-verified: sitemap.xml still lists 15 URLs, and the showcase ban holds (no calculator projects in any page or post)
+
 ## 2026-11-05
 - README: structure section now states the repo-root file total of 19 files (10 HTML + README, CHANGELOG, CNAME, ads.txt, robots.txt, sitemap.xml, llms.txt, 2 PDFs), counted from the repo root
 - Re-verified: sitemap.xml still lists 15 URLs, and the showcase ban holds (no calculator projects in any page or post)
