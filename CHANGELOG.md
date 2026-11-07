@@ -4,6 +4,11 @@ Dated record of shipped work on this portfolio site. Newest first.
 
 
 
+## 2026-11-07
+- README: sitemap audited — all 15 sitemap URLs resolve to files in the repo, and `blog.html` links all 7 posts, counted from `sitemap.xml` and `blog.html`
+- README: `robots.txt` now states the 9 named AI crawlers it welcomes (GPTBot, ChatGPT-User, PerplexityBot, ClaudeBot, anthropic-ai, Google-Extended, Applebot-Extended, Bytespider, Amazonbot) on top of the wildcard allow, counted from `robots.txt`
+- Re-verified: the repo still tracks 52 files, and the showcase ban holds (no calculator projects in any page or post)
+
 ## 2026-11-06
 - README: structure section now states the repo total of 52 tracked files (largest group `assets/img/` with 22 images), counted with `git ls-files`
 - Re-verified: sitemap.xml still lists 15 URLs, and the showcase ban holds (no calculator projects in any page or post)
