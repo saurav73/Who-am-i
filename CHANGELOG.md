@@ -4,6 +4,11 @@ Dated record of shipped work on this portfolio site. Newest first.
 
 
 
+## 2026-11-08
+- README: assets breakdown corrected (22 images include `Image.jpeg`; the 26 files also hold 1 favicon, previously unmentioned), and all 7 outbound live-site links on `projects.html` verified returning HTTP 200
+- blog.html: the two free checklist PDFs are now linked from a Free downloads section; they were advertised in the README and `llms.txt` but reachable from no page
+- Re-verified: sitemap still lists 15 URLs, `blog.html` still links all 7 posts, meta descriptions on all 16 pages stay within 145 characters, and the showcase ban holds (no calculator projects in any page or post)
+
 ## 2026-11-07
 - README: sitemap audited — all 15 sitemap URLs resolve to files in the repo, and `blog.html` links all 7 posts, counted from `sitemap.xml` and `blog.html`
 - README: `robots.txt` now states the 9 named AI crawlers it welcomes (GPTBot, ChatGPT-User, PerplexityBot, ClaudeBot, anthropic-ai, Google-Extended, Applebot-Extended, Bytespider, Amazonbot) on top of the wildcard allow, counted from `robots.txt`
