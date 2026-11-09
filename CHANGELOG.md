@@ -4,6 +4,12 @@ Dated record of shipped work on this portfolio site. Newest first.
 
 
 
+## 2026-11-09
+- sitemap.xml: `blog.html` lastmod refreshed to 2026-11-08 — the page gained the Free downloads section that day but still showed 2026-10-23
+- SEO: og:description and twitter:description on projects, contact, and the java-mysql and react-beginners posts now match their meta descriptions (138-143 chars); the social tags still carried the longer 150-154 char variants
+- SEO: lengthened the six shortest page titles to 50-60 chars per the title rule — index (47 to 57), work (33 to 55), projects (39 to 58), contact (41 to 55), and the java-mysql (44 to 55) and react-beginners (47 to 55) posts — `<title>`, og:title and twitter:title updated together
+- Re-verified: sitemap still lists 15 URLs, `blog.html` still links all 7 posts, all 16 meta descriptions stay within 145 characters, all 47 cache-busting references still share one version (v=20261006a), and the showcase ban holds (no calculator projects in any page or post)
+
 ## 2026-11-08
 - README: assets breakdown corrected (22 images include `Image.jpeg`; the 26 files also hold 1 favicon, previously unmentioned), and all 7 outbound live-site links on `projects.html` verified returning HTTP 200
 - blog.html: the two free checklist PDFs are now linked from a Free downloads section; they were advertised in the README and `llms.txt` but reachable from no page
