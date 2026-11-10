@@ -4,6 +4,11 @@ Dated record of shipped work on this portfolio site. Newest first.
 
 
 
+## 2026-11-10
+- SEO: lengthened the last four short page titles to 50-60 chars per the title rule — Privacy (46 to 53), Terms (48 to 55), and the ESP32 home automation (48 to 53) and Spring Boot REST API best practices (48 to 53) posts — `<title>`, og:title and twitter:title updated together; sitemap lastmod bumped to 2026-11-10 for Privacy, Terms and about.html
+- SEO: og:description and twitter:description on about.html now match its meta description (115 chars); the social tags still carried the longer '(also spelled Saurab Shrestha)' variant
+- Re-verified: sitemap still lists 15 URLs, `blog.html` still links all 7 posts, all 16 meta descriptions stay within 145 characters, all 47 cache-busting references still share one version (v=20261006a), the repo still tracks 52 files, and the showcase ban holds (no calculator projects in any page or post)
+
 ## 2026-11-09
 - sitemap.xml: `blog.html` lastmod refreshed to 2026-11-08 — the page gained the Free downloads section that day but still showed 2026-10-23
 - SEO: og:description and twitter:description on projects, contact, and the java-mysql and react-beginners posts now match their meta descriptions (138-143 chars); the social tags still carried the longer 150-154 char variants
