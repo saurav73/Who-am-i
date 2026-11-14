@@ -2,6 +2,9 @@
 
 Dated record of shipped work on this portfolio site. Newest first.
 
+## 2026-11-14
+- Re-verified: all 7 outbound live-site links on `projects.html` still return HTTP 200 (verification date in the README moved to 2026-11-14); the GitHub and Instagram profile links on the same page also returned HTTP 200 (LinkedIn returns 999 to automated requests, a bot block, not a dead link); all 16 content pages' meta descriptions stay within 145 characters (longest 143), all 16 page titles are 52-59 chars, og/twitter titles and descriptions now match their meta tags on every content page (the 404 meta description is 130 chars), no internal link is broken, every sitemap lastmod matches its page's last commit date, `blog.html` still links all 7 posts, all 47 cache-busting references still share one version (v=20261006a), the repo still tracks 52 files (17 HTML), and the showcase ban holds (no calculator projects in any page or post)
+
 
 
 ## 2026-11-13

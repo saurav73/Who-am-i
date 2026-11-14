@@ -8,7 +8,7 @@ Full Stack Developer from Lalitpur, Nepal — Java / Spring Boot backends, React
 
 - **Three themes** — professional light, dark, and a full anime mode (manga-style animated design) with One Piece and Jujutsu Kaisen sub-modes
 - **Blog** — classic article list (`posts/`) covering Java, Spring Boot, React, and maker projects — 7 posts by filename prefix: 3 `spring-boot-*`, 2 `react-*`, 1 `java-mysql-*`, 1 `esp32-*`, counted from `posts/`
-- **Projects & work pages** — selected builds with write-ups, ToolNest featured first (current flagship product); all 7 outbound live-site links on `projects.html` verified returning HTTP 200 on 2026-11-13, counted from `projects.html`; the GitHub and Instagram profile links on the same page also returned HTTP 200
+- **Projects & work pages** — selected builds with write-ups, ToolNest featured first (current flagship product); all 7 outbound live-site links on `projects.html` verified returning HTTP 200 on 2026-11-14, counted from `projects.html`; the GitHub and Instagram profile links on the same page also returned HTTP 200
 - **SEO + AI-ready** — sitemap (15 URLs: 8 pages + 7 posts), robots.txt, `llms.txt`, per-page meta — every one of the 15 sitemap URLs resolves to a file in the repo, and `blog.html` links all 7 posts, counted from `sitemap.xml` and `blog.html`. `robots.txt` explicitly welcomes 9 named AI crawlers (GPTBot, ChatGPT-User, PerplexityBot, ClaudeBot, anthropic-ai, Google-Extended, Applebot-Extended, Bytespider, Amazonbot) on top of the wildcard allow, counted from `robots.txt`
 - **AdSense** — subtle native ads (`ads.txt` at root)
 
