@@ -25,7 +25,7 @@ Static HTML / CSS / vanilla JS. No build step, no framework. Hosted on **GitHub 
 | `about.html`, `contact.html` | About / contact |
 | `blog.html`, `posts/` | Blog list + articles |
 | `projects.html`, `work.html` | Projects / work |
-| `assets/` | CSS, JS, images (26 files: 2 CSS, 1 JS, 22 images — 20 JPG + 1 PNG in `img/`, plus `Image.jpeg` at the assets root — and 1 favicon, `favicon.ico`) |
+| `assets/` | CSS, JS, images (26 files: 2 CSS, 1 JS, 22 files in `img/` — 20 JPG + 1 PNG + the favicon `favicon.ico` — and `Image.jpeg` at the assets root) |
 | `CNAME` | Custom domain (`saurabshrestha.com.np`) |
 | `sitemap.xml`, `robots.txt`, `llms.txt` | SEO / AI crawler files |
 | `privacy.html`, `terms.html` | Privacy policy and terms pages (both in the sitemap) |
