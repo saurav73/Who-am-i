@@ -2,6 +2,10 @@
 
 Dated record of shipped work on this portfolio site. Newest first.
 
+## 2026-11-18
+- README: outbound-link verification date moved to 2026-11-18 (all 7 live-site links on `projects.html` re-checked today, all HTTP 200; GitHub and Instagram profile links also 200; LinkedIn returns 999 to automated requests, a bot block, not a dead link)
+- README: corrected the `assets/` breakdown — `favicon.ico` lives in `assets/img/`, so `img/` holds 20 JPG + 1 PNG + the favicon (22 files); total stays 26 files
+
 ## 2026-11-17
 - Re-verified: all 7 outbound live-site links on `projects.html` still return HTTP 200 (GitHub and Instagram profile links also 200; LinkedIn returns 999 to automated requests, a bot block, not a dead link); all 16 content pages' meta descriptions stay within 145 characters (longest 143), all 16 page titles are 52-59 chars, every sitemap lastmod still matches its page's last commit date, `blog.html` still links all 7 posts, no internal link is broken, all 47 cache-busting references still share one version (v=20261006a), the repo still tracks 52 files (17 HTML), the footer year is set dynamically from `main.js`, and the showcase ban holds (no calculator projects in any page or post). No site changes were needed today
 
