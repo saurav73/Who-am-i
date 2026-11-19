@@ -2,6 +2,10 @@
 
 Dated record of shipped work on this portfolio site. Newest first.
 
+## 2026-11-19
+- README: outbound-link verification date moved to 2026-11-19 (all 7 live-site links on `projects.html` re-checked today, all HTTP 200; GitHub and Instagram profile links also 200; LinkedIn returns 999 to automated requests, a bot block, not a dead link)
+- Re-verified: the repo still tracks 52 files (17 HTML: 10 at root + 7 in `posts/`), the 7 posts still split 3 `spring-boot-*`, 2 `react-*`, 1 `java-mysql-*`, 1 `esp32-*`; `assets/` still holds 26 files (2 CSS, 1 JS, 22 in `img/`); the sitemap still lists 15 URLs, `robots.txt` still welcomes the same 9 named AI crawlers on top of the wildcard allow, and all 47 cache-busting references still share one version (`v=20261006a`)
+
 ## 2026-11-18
 - README: outbound-link verification date moved to 2026-11-18 (all 7 live-site links on `projects.html` re-checked today, all HTTP 200; GitHub and Instagram profile links also 200; LinkedIn returns 999 to automated requests, a bot block, not a dead link)
 - README: corrected the `assets/` breakdown — `favicon.ico` lives in `assets/img/`, so `img/` holds 20 JPG + 1 PNG + the favicon (22 files); total stays 26 files
