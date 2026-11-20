@@ -2,6 +2,10 @@
 
 Dated record of shipped work on this portfolio site. Newest first.
 
+## 2026-11-20
+- README: outbound-link verification date moved to 2026-11-20 (all 7 live-site links on `projects.html` re-checked today, all HTTP 200; GitHub and Instagram profile links also 200; LinkedIn returns 999 to automated requests, a bot block, not a dead link)
+- Re-verified: the repo still tracks 52 files (17 HTML: 10 at root + 7 in `posts/`), the 7 posts still split 3 `spring-boot-*`, 2 `react-*`, 1 `java-mysql-*`, 1 `esp32-*`; `assets/` still holds 26 files (2 CSS, 1 JS, 22 in `img/`); the sitemap still lists 15 URLs, all resolving to files in the repo, and `llms.txt` still lists the same 15 pages plus the 2 checklist PDFs; `robots.txt` still welcomes the same 9 named AI crawlers on top of the wildcard allow, and all 47 cache-busting references still share one version (`v=20261006a`)
+
 ## 2026-11-19
 - README: outbound-link verification date moved to 2026-11-19 (all 7 live-site links on `projects.html` re-checked today, all HTTP 200; GitHub and Instagram profile links also 200; LinkedIn returns 999 to automated requests, a bot block, not a dead link)
 - Re-verified: the repo still tracks 52 files (17 HTML: 10 at root + 7 in `posts/`), the 7 posts still split 3 `spring-boot-*`, 2 `react-*`, 1 `java-mysql-*`, 1 `esp32-*`; `assets/` still holds 26 files (2 CSS, 1 JS, 22 in `img/`); the sitemap still lists 15 URLs, `robots.txt` still welcomes the same 9 named AI crawlers on top of the wildcard allow, and all 47 cache-busting references still share one version (`v=20261006a`)
